@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!--    Title & Logo   -->
+    <title> Checkout - DEES </title>
+    <link rel="shortcut icon" type="image/png" href="assets/img/logo.ico">
+    <!-- Icons & Fonts -->
+    <link rel="stylesheet" href="assets/fonts/f_custom.css">
+    <link rel="stylesheet" href="assets/icons/i_font-awesome.css">
+    <link rel="stylesheet" href="assets/icons/i_custom.css">
+    <!--CSS-->
+    <link rel="stylesheet" href="assets/css/adjust.css">
+    <!--Javascript-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/linq.js"></script>
+    <script src="assets/js/adjust.js"></script>
+    <script src="assets/js/easy.qrcode.min.js"></script>
+    <!--Crucial Data-->
+    <script src="assets/data/mylogo.js"></script>
+    <!--Design Data-->
+    <script src="assets/data/carttable.js"></script>
+
+    <script src="assets/js/client/checkout.js"></script>
+</head>
+<body>
+
+    <main class="adjust">
+        <!--1. Banner-->
+        <section>
+            <div style="background-color: #EEEEEE; width:100%; ">
+                <div style="width: 100%; background-color: #EEEEEE; padding-top:4px; padding-bottom:4px;">
+                    <div style="width:95%; display:flex; margin:auto; border-bottom-right-radius:40px; background-color:white;">
+                        <div style="border-bottom: solid #E48380 2px; padding: 5px; font-size: 35px; color: #E48380; font-weight: 600; ">
+                            Checkout
+                        </div>
+                        <div style="flex:1;"></div>
+                    </div>
+                </div>  
+            </div>
+        </section>
+
+        <!--2. QR Code-->
+        <section>
+            <div style="background-color: #EEEEEE; width:100%; ">
+                <div id="qr_canv1" style="margin:auto; width:400px; margin:auto;">
+
+                </div>
+                <div style="display:flex; font-size:30px; margin-top:30px;">
+                    <div style="flex:1;"></div>
+                    <div onclick="saveQR()" style="padding: 10px; color: #E48380; border: solid #E48380 2px; border-radius:15px; font-weight:700;">
+                        Download <span class="fa fa-save"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                </div>
+            </div> 
+        </section>
+         
+
+    </main>
+
+</body>
+</html>

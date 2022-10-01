@@ -1,0 +1,40 @@
+﻿ 
+@font-face { font-family: 'teuber'; src: url('custom/custom.ttf') format('truetype'); } 
+.i-text-color:before { content: "\e900"; }  
+.i-cross:before {  content: "\e901"; } 
+.i-cardinal:before {  content: "\e902"; } 
+.i-undo2:before { content: "\e903"; } 
+.i-redo2:before { content: "\e904"; }   
+.i-pages:before { content: "\e905"; }
+.i-zoom-out:before { content: "\e906"; }
+.i-zoom-in:before { content: "\e907"; }
+.i-three-col:before { content: "\e908"; } 
+.i-two-col:before { content: "\e909"; }  
+.i-one-col:before { content: "\e90a"; }  
+   
+@font-face { font-family: 'teuber'; src: url('custom/uml.ttf') format('truetype'); }  
+.u-node:before {  content: "\f900"; } 
+.u-activity:before {  content: "\f901"; } 
+.u-state:before {  content: "\f902"; } 
+.u-actor:before {  content: "\f903"; } 
+.u-start:before {  content: "\f904"; } 
+.u-box:before {  content: "\f905"; } 
+.u-end:before {  content: "\f906"; } 
+.u-zigzagline:before {  content: "\f907"; } 
+
+/*----------------------------------------------*/
+[class^="ic i-"], [class*=" i-"], [class^="uc u-"], [class*=" u-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'teuber' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+ 
+ 

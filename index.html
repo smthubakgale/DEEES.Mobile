@@ -1,0 +1,1382 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!--    Title & Logo   -->
+    <title> Mobile App - DEES </title>
+    <link rel="shortcut icon" type="image/png" href="assets/img/logo.ico">
+    <!-- Icons & Fonts -->
+    <link rel="stylesheet" href="assets/icons/i_font-awesome.css">
+    <!--Javascript-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/adjust.js"></script>
+    <script src="assets/js/bridge.js"></script>
+    <!--Design Data-->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        [class*="col-"] {
+            float: left;
+            padding: 15px;
+        }
+
+        html {
+            font-family: "Lucida Sans", sans-serif;
+        }
+
+        .header {
+            background-image: linear-gradient(to right,#00B09E,#79E2DC) ;
+            color: #ffffff;
+            padding: 15px;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            cursor : pointer;
+            padding: 8px;
+            margin-bottom: 7px;
+            background-color: #33b5e5;
+            color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+
+            .menu li:hover {
+                background-color: #0099cc;
+            }
+
+        .aside {
+            background-color: #00B09E;
+            padding: 15px;
+            color: #ffffff;
+            text-align: center;
+            font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+
+        .footer {
+            background-color: #0099cc;
+            color: #ffffff;
+            text-align: center;
+            font-size: 12px;
+            padding: 15px;
+        }
+        .mbl {
+            width: 280px;
+            height: 470px;
+            position: relative;
+            color: white;
+            margin: auto;
+            overflow: hidden;
+            padding: 10px;
+            background-color: black;
+            border-radius: 20px;
+        }
+
+        .force-mobile {
+            width: 520px;
+            max-width: 520px;
+            height: 830px;
+            margin: 0 auto;
+            border-style: none;
+            border-color: inherit;
+            border-width: 0px;
+            -webkit-transform: scale(0.5);
+            -webkit-transform-origin: 0 0;
+            display: block;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+        }
+
+        @media only screen and (min-width: 600px) {
+             
+            /* For tablets: */
+            .col-s-1 {
+                width: 8.33%;
+            }
+
+            .col-s-2 {
+                width: 16.66%;
+            }
+
+            .col-s-3 {
+                width: 25%;
+            }
+
+            .col-s-4 {
+                width: 33.33%;
+            }
+
+            .col-s-5 {
+                width: 41.66%;
+            }
+
+            .col-s-6 {
+                width: 50%;
+            }
+
+            .col-s-7 {
+                width: 58.33%;
+            }
+
+            .col-s-8 {
+                width: 66.66%;
+            }
+
+            .col-s-9 {
+                width: 75%;
+            }
+
+            .col-s-10 {
+                width: 83.33%;
+            }
+
+            .col-s-11 {
+                width: 91.66%;
+            }
+
+            .col-s-12 {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+            /* For desktop: */
+            .row {
+                display: block;
+            }
+            .col-1 {
+                width: 8.33%;
+            }
+
+            .col-2 {
+                width: 16.66%;
+            }
+
+            .col-3 {
+                width: 25%;
+            }
+
+            .col-4 {
+                width: 33.33%;
+            }
+
+            .col-5 {
+                width: 41.66%;
+            }
+
+            .col-6 {
+                width: 50%;
+            }
+
+            .col-7 {
+                width: 58.33%;
+            }
+
+            .col-8 {
+                width: 66.66%;
+            }
+
+            .col-9 {
+                width: 75%;
+            }
+
+            .col-10 {
+                width: 83.33%;
+            }
+
+            .col-11 {
+                width: 91.66%;
+            }
+
+            .col-12 {
+                width: 100%;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <style>
+        .mbA{ display:none}
+        .mbA1{display: block}
+    </style>
+    <script>
+        function tbA(tag)
+        {
+            $(".mbA").css("display","none");
+            $("." + tag).css("display","block");
+        }
+    </script>
+
+    <div class="header">
+       <div style="display:flex;">
+            <div>
+               <img src="assets/img/logo.png" style="width:50px;"/> 
+            </div>
+           <div style="padding:2px; padding-left:5px; font-size:30px; font-weight:700;">
+                DEEES.Mobile : Admin Dashboard  
+           </div>
+           <div style="flex:1;"></div>
+       </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3 col-s-3 menu">
+            <ul>
+                <li onclick="tbA('mbA1')"> App Demo </li>
+                <li onclick="tbA('mbA6')"> Users </li>
+                <li onclick="tbA('mbA3')"> Suppliers </li>
+                <li onclick="tbA('mbA4')"> Categories </li>
+                <li onclick="tbA('mbA2')"> Products </li>
+                <li onclick="tbA('mbA5')"> Payments </li>
+                <li> Downloads </li>
+                <li> Architecture </li> 
+                <li> Analytics </li> 
+            </ul>
+        </div>
+
+            <style> 
+            .tbh{padding:10px; font-size:16px; width:150px; text-align:center;   }
+            .tbr{padding:10px; font-size:16px; width:150px;text-align:center; padding-top:30px; padding-left:5px;}
+            .tba{padding:10px; font-size:16px; width:150px;text-align:center; padding-top:15px; padding-left:5px; display:flex; font-size:30px;}
+            .tba .a{flex:1; text-align:center; padding:10px; color:green; cursor:pointer;}
+            .tba .b{flex:1; text-align:center; padding:10px; color:#DC3545; cursor:pointer;}
+            .tbc1{ width:80px; } .tbc2{ width:100px; } .tbc3{ width:200px; } 
+            .tbim{width:70px; max-height:70px; margin:auto; border-radius:50%; padding:3px; border:solid #BDBEBF 2px; background-color:white;}
+            .tbim .a{width:58px; height:58px; border-radius:50%; margin:auto;}
+
+            .tbrA{width:100%;  display:flex; border-bottom:solid #BDBEBF 3px; border-top:solid #BDBEBF 3px; background-color:#F2F2F2;  }
+            .tbrB{width:100%;  display:flex;  }
+            .tbf{padding:10px; display:flex; color:#767676;}
+            .tbf .a{padding:8px; font-size:14px; border:solid #767676 2px; cursor:pointer;}
+            .tbf .b{padding:8px; font-size:15px; background-color:#0D6EFD; color:white;}
+         
+                .ppu{
+                    position:absolute; display:flex; top:0px; left:-100%; background-color:rgba(0,0,0,0.3); width:930px; min-height:80vh; 
+                }
+                .pphd{width:100%;  display:flex; color:#262626; border-bottom:solid #848586 1px;}
+                .ppfm{background-color:#F8F9FA; width:100%; padding-top:5px; padding-left:10%; display:flex; flex-direction:column;}
+                .pplb{font-size:13px; color:#262626; padding-bottom:5px; padding-top:15px;}
+                .ppin{width:80%;}
+                .ppin .a{outline:none; padding:5px; width:100%;}
+                .ppin .b{outline:none; padding:5px; width:100%; text-align:center;}
+                .ppin .c{outline:none; padding:5px; width:100%; min-height:110px;}
+                .ppcn{display:flex; font-size:12px; padding-bottom:10px; color:white;}
+                .ppcn .a{padding:5px; background-color: #6C757D; cursor:pointer; border-radius:5px;}
+                .ppcn .b{padding:5px; background-color: #0D6EFD; cursor:pointer; border-radius:5px;}
+                .ppcn .c{color:#0D6EFD; font-size:16px; font-weight:700;}
+            </style>
+            <script>
+                function hdpp(id)
+                {
+                    $("#" + id).css("left" , "-100%");
+                }
+                function swpp(id)
+                {
+                    $("#" + id).css("left" , "0%");
+                }
+                function edtA(tag)
+                { 
+                     swpp('pp2');
+                }
+                function edtB(tag)
+                { 
+                     swpp('pp4');
+                }
+                function edtC(tag)
+                { 
+                     swpp('pp6');
+                }
+                function edtD(tag)
+                { 
+                     swpp('pp8');
+                }
+            </script>
+        <!-- Users -->
+        <div class="mbA mbA6 col-s-9 " style="height:80vh; overflow-x:hidden; overflow-y:scroll; position:relative;" >
+
+            <div style="width:900px; overflow-x:scroll; margin:auto;">
+                <div style="width:100%; background-color:#FB7A44; display:flex;">
+                    <div style="padding:10px; color:white; font-size:20px;">
+                        Manage Users
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div style="padding:10px;">
+                         <div onclick="swpp('pp7')" style="padding:5px; background-color:white; color:#666666; cursor:pointer;">
+                             <span class="fa fa-plus-circle"></span> Add New User
+                         </div>
+                    </div>
+                </div>
+                <div style="width:100%;  display:flex; ">
+                    <div class="tbh tbc1">
+                        ID <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div> 
+                    <div class="tbh tbc2">
+                        Image <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh tbc3">
+                        First Name <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                       Last Name <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                        Email <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                        ID Number <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                        Phone Number <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                        Action <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="width:10px"></div>
+                </div>
+                <div>
+                    <div class="tbrA">
+                        <div class="tbr tbc1">
+                            1
+                        </div>
+                        <div style="flex:1;"></div> 
+                        <div class="tbh tbc2">
+                            <div class="tbim">
+                                <img src="assets/img/img.png" class="a" />
+                            </div>
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr tbc3">
+                            Dwayne
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            Johnson
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            solo@mail.com  
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            22017345288351
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            066 267 3802
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tba" >
+                            <div style="flex:2"></div>
+                             <div class="a">
+                                <span class="fa fa-edit" onclick="edtD(this)" ></span>
+                             </div>
+                             <div class="b">
+                                <span class="fa fa-trash"></span>
+                             </div>
+                             <div style="flex:2"></div>
+                        </div>
+                        <div style="width:10px"></div>
+                    </div>
+                    <div class="tbrB">
+                        <div class="tbr tbc1">
+                            1
+                        </div>
+                        <div style="flex:1;"></div> 
+                        <div class="tbh tbc2">
+                            <div class="tbim">
+                                <img src="assets/img/img.png" class="a" />
+                            </div>
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr tbc3">
+                            Rob
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            Lowe 
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            solo@mail.com  
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            9903025823538
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            082 346 3826
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tba" >
+                            <div style="flex:2"></div>
+                             <div class="a" onclick="edtD(this)" >
+                                <span class="fa fa-edit"></span>
+                             </div>
+                             <div class="b">
+                                <span class="fa fa-trash"></span>
+                             </div>
+                             <div style="flex:2"></div>
+                        </div>
+                        <div style="width:10px"></div>
+                    </div>
+                </div>
+                <div class="tbf">
+                    <div style="flex:1;"></div>
+                    <div class="a">
+                        Previous
+                    </div>
+                    <div class="b">
+                        1
+                    </div>
+                    <div class="a">
+                        Next
+                    </div>
+                </div>
+
+            </div> 
+            <div class="ppu" id="pp7" >
+                 <div style="flex:1;" onclick="hdpp('pp7')"></div>
+                 <div style="height:80vh; display:flex; flex-direction:column;">
+                    <div style="flex:1;" onclick="hdpp('pp7')"></div>
+                    <div style="width:300px; min-height:65vh; background-color:white;">
+                       <div class="pphd" >
+                            <div style="padding:10px;"> Add New User </div>
+                            <div style="flex:1;"></div>
+                            <div style="padding:10px; cursor:pointer;" onclick="hdpp('pp7')"> <span class="fa fa-times"></span></div>
+                       </div>
+                       <div class="ppfm" style=" min-height:60vh;">
+
+                            <div class="pplb">
+                                First Name 
+                            </div>
+                            <div class="ppin">
+                                <input type="text" class="a" placeholder="First Name" />
+                            </div>
+                            <div class="pplb">
+                               Last Name 
+                            </div>
+                            <div class="ppin">
+                                <input type="text" class="a" placeholder="Last Name" />
+                            </div>
+                            <div class="pplb">
+                               Email Address
+                            </div>
+                            <div class="ppin">
+                                <input type="email" class="a" placeholder="Email Address" />
+                            </div> 
+                            <div class="pplb">
+                               Identity Number 
+                            </div>
+                            <div class="ppin">
+                                <input type="text" class="a" placeholder="Identity Number" />
+                            </div>
+                            <div class="pplb">
+                               Phone Number 
+                            </div>
+                            <div class="ppin">
+                                <input type="text" class="a" placeholder="Phone Number" />
+                            </div>
+                            <div class="pplb">
+                                User Image
+                            </div> 
+                            <div class="ppin">
+                                <input type="file" class="b" />
+                            </div>
+
+                            <div style="flex:1;"></div>
+
+                            <div class="ppcn">
+                                <div style="width:10px;"></div>
+                                <div class="c">
+                                    1
+                                </div>
+                                <div style="flex:1;"></div>
+                                <div class="a" onclick="hdpp('pp7')">  Close </div>
+                                <div style="width:10px;"></div>
+                                <div class="b"> Add New User</div>
+                                <div style="width:10px;"></div>
+                           </div>
+                       </div>
+                    </div>
+                    <div style="flex:1;" onclick="hdpp('pp7')"></div>
+                 </div>
+                 <div style="flex:1;" onclick="hdpp('pp7')"></div>
+            </div>
+            <div class="ppu" id="pp8" >
+                 <div style="flex:1;" onclick="hdpp('pp8')"></div>
+                 <div style="height:80vh; display:flex; flex-direction:column;">
+                    <div style="flex:1;" onclick="hdpp('pp8')"></div>
+                    <div style="width:300px; min-height:65vh; background-color:white;">
+                       <div class="pphd" >
+                            <div style="padding:10px;"> Edit User </div>
+                            <div style="flex:1;"></div>
+                            <div style="padding:10px; cursor:pointer;" onclick="hdpp('pp8')"> <span class="fa fa-times"></span></div>
+                       </div>
+                       <div class="ppfm" style=" min-height:60vh;">
+                        <div class="pplb">
+                            First Name 
+                        </div>
+                        <div class="ppin">
+                            <input type="text" class="a" placeholder="First Name" />
+                        </div>
+                        <div class="pplb">
+                           Last Name 
+                        </div>
+                        <div class="ppin">
+                            <input type="text" class="a" placeholder="Last Name" />
+                        </div>
+                        <div class="pplb">
+                           Email Address
+                        </div>
+                        <div class="ppin">
+                            <input type="email" class="a" placeholder="Email Address" />
+                        </div> 
+                        <div class="pplb">
+                           Identity Number 
+                        </div>
+                        <div class="ppin">
+                            <input type="text" class="a" placeholder="Identity Number" />
+                        </div>
+                        <div class="pplb">
+                           Phone Number 
+                        </div>
+                        <div class="ppin">
+                            <input type="text" class="a" placeholder="Phone Number" />
+                        </div>
+                        <div class="pplb">
+                            User Image
+                        </div> 
+                            <div class="ppin">
+                                <input type="file" class="b" />
+                            </div>
+                            <div style="padding-left:10px;">
+                                <img src="assets/img/img.png" style="width:60px; height:60px;" />
+                            </div>
+
+                            <div style="flex:1;"></div>
+
+                            <div class="ppcn">
+                                <div style="width:10px;"></div>
+                                <div class="c">
+                                    1
+                                </div>
+                                <div style="flex:1;"></div>
+                                <div class="a" onclick="hdpp('pp8')">  Close </div>
+                                <div style="width:10px;"></div>
+                                <div class="b"> Update User </div>
+                                <div style="width:10px;"></div>
+                           </div>
+                       </div>
+                    </div>
+                    <div style="flex:1;" onclick="hdpp('pp8')"></div>
+                 </div>
+                 <div style="flex:1;" onclick="hdpp('pp8')"></div>
+            </div>
+        </div> 
+        <!-- Products -->
+        <div class="mbA mbA2 col-s-9 " style="height:80vh; overflow-x:hidden; overflow-y:scroll; position:relative;" >
+
+            <div style="width:900px; overflow-x:scroll; margin:auto;">
+                <div style="width:100%; background-color:#FB7A44; display:flex;">
+                    <div style="padding:10px; color:white; font-size:20px;">
+                        Manage Products
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div style="padding:10px;">
+                         <div onclick="swpp('pp1')" style="padding:5px; background-color:white; color:#666666; cursor:pointer;">
+                             <span class="fa fa-plus-circle"></span> Add New Product
+                         </div>
+                    </div>
+                </div>
+                <div style="width:100%;  display:flex; ">
+                    <div class="tbh tbc1">
+                        ID <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div> 
+                    <div class="tbh tbc2">
+                        Image <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh tbc3">
+                        Name <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                        Category <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                        Supplier <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                        Price <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                        Action <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="width:10px"></div>
+                </div>
+                <div>
+                    <div class="tbrA">
+                        <div class="tbr tbc1">
+                            1
+                        </div>
+                        <div style="flex:1;"></div> 
+                        <div class="tbh tbc2">
+                            <div class="tbim">
+                                <img src="assets/img/img.png" class="a" />
+                            </div>
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr tbc3">
+                            Fast Runner
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            Quadz Electric  
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            solo@mail.com  
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            R <span> 55.78 </span>
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tba" >
+                            <div style="flex:2"></div>
+                             <div class="a">
+                                <span class="fa fa-edit" onclick="edtA(this)" ></span>
+                             </div>
+                             <div class="b">
+                                <span class="fa fa-trash"></span>
+                             </div>
+                             <div style="flex:2"></div>
+                        </div>
+                        <div style="width:10px"></div>
+                    </div>
+                    <div class="tbrB">
+                        <div class="tbr tbc1">
+                            1
+                        </div>
+                        <div style="flex:1;"></div> 
+                        <div class="tbh tbc2">
+                            <div class="tbim">
+                                <img src="assets/img/img.png" class="a" />
+                            </div>
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr tbc3">
+                            Fast Runner
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            Quadz Electric  
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            solo@mail.com  
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            R <span> 55.78 </span>
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tba" >
+                            <div style="flex:2"></div>
+                             <div class="a" onclick="edtA(this)" >
+                                <span class="fa fa-edit"></span>
+                             </div>
+                             <div class="b">
+                                <span class="fa fa-trash"></span>
+                             </div>
+                             <div style="flex:2"></div>
+                        </div>
+                        <div style="width:10px"></div>
+                    </div>
+                </div>
+                <div class="tbf">
+                    <div style="flex:1;"></div>
+                    <div class="a">
+                        Previous
+                    </div>
+                    <div class="b">
+                        1
+                    </div>
+                    <div class="a">
+                        Next
+                    </div>
+                </div>
+
+            </div> 
+            <div class="ppu" id="pp1" >
+                 <div style="flex:1;" onclick="hdpp('pp1')"></div>
+                 <div style="height:80vh; display:flex; flex-direction:column;">
+                    <div style="flex:1;" onclick="hdpp('pp1')"></div>
+                    <div style="width:300px; min-height:65vh; background-color:white;">
+                       <div class="pphd" >
+                            <div style="padding:10px;"> Add New Product </div>
+                            <div style="flex:1;"></div>
+                            <div style="padding:10px; cursor:pointer;" onclick="hdpp('pp1')"> <span class="fa fa-times"></span></div>
+                       </div>
+                       <div class="ppfm" style=" min-height:60vh;">
+
+                            <div class="pplb">
+                                Product Name 
+                            </div>
+                            <div class="ppin">
+                                <input type="text" class="a" placeholder="Product Name" />
+                            </div>
+                            <div class="pplb">
+                                Product Category  
+                            </div>
+                            <div class="ppin">
+                                <select class="a">
+                                    <option> Category A </option>
+                                    <option> Category B </option>
+                                </select>
+                            </div>
+                            <div class="pplb">
+                                Product Price
+                            </div>
+                            <div class="ppin">
+                                <input type="number" class="b" placeholder="00.00"  />
+                            </div>
+                            <div class="pplb">
+                                Product Supplier 
+                            </div>
+                            <div class="ppin">
+                                <select class="a">
+                                    <option> Supplier A </option>
+                                    <option> Supplier B </option>
+                                </select>
+                            </div> 
+                            <div class="pplb">
+                                Product Image
+                            </div> 
+                            <div class="ppin">
+                                <input type="file" class="b" />
+                            </div>
+
+                            <div style="flex:1;"></div>
+
+                            <div class="ppcn">
+                                <div style="width:10px;"></div>
+                                <div class="c">
+                                    1
+                                </div>
+                                <div style="flex:1;"></div>
+                                <div class="a" onclick="hdpp('pp1')">  Close </div>
+                                <div style="width:10px;"></div>
+                                <div class="b"> Add New Product </div>
+                                <div style="width:10px;"></div>
+                           </div>
+                       </div>
+                    </div>
+                    <div style="flex:1;" onclick="hdpp('pp1')"></div>
+                 </div>
+                 <div style="flex:1;" onclick="hdpp('pp1')"></div>
+            </div>
+            <div class="ppu" id="pp2" >
+                 <div style="flex:1;" onclick="hdpp('pp2')"></div>
+                 <div style="height:80vh; display:flex; flex-direction:column;">
+                    <div style="flex:1;" onclick="hdpp('pp2')"></div>
+                    <div style="width:300px; min-height:65vh; background-color:white;">
+                       <div class="pphd" >
+                            <div style="padding:10px;"> Edit Product </div>
+                            <div style="flex:1;"></div>
+                            <div style="padding:10px; cursor:pointer;" onclick="hdpp('pp2')"> <span class="fa fa-times"></span></div>
+                       </div>
+                       <div class="ppfm" style=" min-height:60vh;">
+
+                            <div class="pplb">
+                                Product Name 
+                            </div>
+                            <div class="ppin">
+                                <input type="text" class="a" placeholder="Product Name" />
+                            </div>
+                            <div class="pplb">
+                                Product Category  
+                            </div>
+                            <div class="ppin">
+                                <select class="a">
+                                    <option> Category A </option>
+                                    <option> Category B </option>
+                                </select>
+                            </div>
+                            <div class="pplb">
+                                Product Price
+                            </div>
+                            <div class="ppin">
+                                <input type="number" class="b" placeholder="00.00"  />
+                            </div>
+                            <div class="pplb">
+                                Product Supplier 
+                            </div>
+                            <div class="ppin">
+                                <select class="a">
+                                    <option> Supplier A </option>
+                                    <option> Supplier B </option>
+                                </select>
+                            </div> 
+                            <div class="pplb">
+                                Product Image
+                            </div> 
+                            <div class="ppin">
+                                <input type="file" class="b" />
+                            </div>
+                            <div style="padding-left:10px;">
+                                <img src="assets/img/img.png" style="width:60px; height:60px;" />
+                            </div>
+
+                            <div style="flex:1;"></div>
+
+                            <div class="ppcn">
+                                <div style="width:10px;"></div>
+                                <div class="c">
+                                    1
+                                </div>
+                                <div style="flex:1;"></div>
+                                <div class="a" onclick="hdpp('pp2')">  Close </div>
+                                <div style="width:10px;"></div>
+                                <div class="b"> Update Product </div>
+                                <div style="width:10px;"></div>
+                           </div>
+                       </div>
+                    </div>
+                    <div style="flex:1;" onclick="hdpp('pp2')"></div>
+                 </div>
+                 <div style="flex:1;" onclick="hdpp('pp2')"></div>
+            </div>
+        </div> 
+        <!-- Suppliers --> 
+        <div class="mbA mbA3 col-s-9 " style="height:80vh; overflow-x:hidden; overflow-y:scroll; position:relative;" >
+
+            <div style="width:900px; overflow-x:scroll; margin:auto;">
+                <div style="width:100%; background-color:#FB7A44; display:flex;">
+                    <div style="padding:10px; color:white; font-size:20px;">
+                        Manage Suppliers 
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div style="padding:10px;">
+                         <div onclick="swpp('pp3')" style="padding:5px; background-color:white; color:#666666; cursor:pointer;">
+                             <span class="fa fa-plus-circle"></span> Add New Supplier
+                         </div>
+                    </div>
+                </div>
+                <div style="width:100%;  display:flex; ">
+                    <div class="tbh tbc3">
+                        Supplier ID <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div> 
+                    <div class="tbh tbc2">
+                        Avatar <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh tbc3">
+                        First Name <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                        Last Name <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                        Email <span class="fa fa-sort"></span>
+                    </div> 
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                        Action <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="width:10px"></div>
+                </div>
+                <div>
+                    <div class="tbrA">
+                        <div class="tbr tbc3">
+                            Supplier <span>1</span>
+                        </div>
+                        <div style="flex:1;"></div> 
+                        <div class="tbh tbc2">
+                            <div class="tbim">
+                                <img src="assets/img/img.png" class="a" />
+                            </div>
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr tbc3">
+                            Vishal 
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            Shashani   
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            solo@mail.com  
+                        </div> 
+                        <div style="flex:1;"></div>
+                        <div class="tba" >
+                            <div style="flex:2"></div>
+                             <div class="a">
+                                <span class="fa fa-edit" onclick="edtB(this)" ></span>
+                             </div>
+                             <div class="b">
+                                <span class="fa fa-trash"></span>
+                             </div>
+                             <div style="flex:2"></div>
+                        </div>
+                        <div style="width:10px"></div>
+                    </div>
+                    <div class="tbrB">
+                        <div class="tbr tbc3">
+                            Supplier <span>1</span>
+                        </div>
+                        <div style="flex:1;"></div> 
+                        <div class="tbh tbc2">
+                            <div class="tbim">
+                                <img src="assets/img/img.png" class="a" />
+                            </div>
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr tbc3">
+                            Ciara
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            Leroux 
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            solo@mail.com  
+                        </div> 
+                        <div style="flex:1;"></div>
+                        <div class="tba" >
+                            <div style="flex:2"></div>
+                             <div class="a" onclick="edtB(this)" >
+                                <span class="fa fa-edit"></span>
+                             </div>
+                             <div class="b">
+                                <span class="fa fa-trash"></span>
+                             </div>
+                             <div style="flex:2"></div>
+                        </div>
+                        <div style="width:10px"></div>
+                    </div>
+                </div>
+                <div class="tbf">
+                    <div style="flex:1;"></div>
+                    <div class="a">
+                        Previous
+                    </div>
+                    <div class="b">
+                        1
+                    </div>
+                    <div class="a">
+                        Next
+                    </div>
+                </div>
+
+            </div> 
+            <div class="ppu" id="pp3" >
+                 <div style="flex:1;" onclick="hdpp('pp3')"></div>
+                 <div style="height:80vh; display:flex; flex-direction:column;">
+                    <div style="flex:1;" onclick="hdpp('pp3')"></div>
+                    <div style="width:300px; min-height:55vh; background-color:white;">
+                       <div class="pphd" >
+                            <div style="padding:10px;"> Add New Supplier </div>
+                            <div style="flex:1;"></div>
+                            <div style="padding:10px; cursor:pointer;" onclick="hdpp('pp3')"> <span class="fa fa-times"></span></div>
+                       </div>
+                       <div class="ppfm" style=" min-height:50vh;">
+
+                            <div class="pplb">
+                                First Name 
+                            </div>
+                            <div class="ppin">
+                                <input type="text" class="a" placeholder="First Name" />
+                            </div>
+                            <div class="pplb">
+                                Last Name 
+                            </div>
+                            <div class="ppin">
+                                <input type="text" class="a" placeholder="Last Name" />
+                            </div>
+                            <div class="pplb">
+                             Email Address
+                            </div>
+                            <div class="ppin">
+                                <input type="email" class="a" placeholder="Email Address" />
+                            </div> 
+                            <div class="pplb">
+                                Supplier Image
+                            </div> 
+                            <div class="ppin">
+                                <input type="file" class="b" />
+                            </div>
+
+                            <div style="flex:1;"></div>
+
+                            <div class="ppcn">
+                                <div style="width:10px;"></div>
+                                <div class="c">
+                                    1
+                                </div>
+                                <div style="flex:1;"></div>
+                                <div class="a" onclick="hdpp('pp3')">  Close </div>
+                                <div style="width:10px;"></div>
+                                <div class="b"> Add New Supplier </div>
+                                <div style="width:10px;"></div>
+                           </div>
+                       </div>
+                    </div>
+                    <div style="flex:1;" onclick="hdpp('pp3')"></div>
+                 </div>
+                 <div style="flex:1;" onclick="hdpp('pp3')"></div>
+            </div>
+            <div class="ppu" id="pp4" >
+                 <div style="flex:1;" onclick="hdpp('pp4')"></div>
+                 <div style="height:80vh; display:flex; flex-direction:column;">
+                    <div style="flex:1;" onclick="hdpp('pp4')"></div>
+                    <div style="width:300px; min-height:65vh; background-color:white;">
+                       <div class="pphd" >
+                            <div style="padding:10px;"> Edit Supplier </div>
+                            <div style="flex:1;"></div>
+                            <div style="padding:10px; cursor:pointer;" onclick="hdpp('pp4')"> <span class="fa fa-times"></span></div>
+                       </div>
+                       <div class="ppfm" style=" min-height:60vh;">
+ 
+                        <div class="pplb">
+                            First Name 
+                        </div>
+                        <div class="ppin">
+                            <input type="text" class="a" placeholder="First Name" />
+                        </div>
+                        <div class="pplb">
+                            Last Name 
+                        </div>
+                        <div class="ppin">
+                            <input type="text" class="a" placeholder="Last Name" />
+                        </div>
+                        <div class="pplb">
+                         Email Address
+                        </div>
+                        <div class="ppin">
+                            <input type="email" class="a" placeholder="Email Address" />
+                        </div> 
+                        <div class="pplb">
+                            Supplier Image
+                        </div> 
+                        <div class="ppin">
+                            <input type="file" class="b" />
+                        </div>
+                        <div style="padding-left:10px;">
+                            <img src="assets/img/img.png" style="width:60px; height:60px;" />
+                        </div>
+
+                        <div style="flex:1;"></div>
+
+                        <div class="ppcn">
+                            <div style="width:10px;"></div>
+                            <div class="c">
+                                1
+                            </div>
+                            <div style="flex:1;"></div>
+                            <div class="a" onclick="hdpp('pp3')">  Close </div>
+                            <div style="width:10px;"></div>
+                            <div class="b"> Update Supplier </div>
+                            <div style="width:10px;"></div>
+                       </div>
+ 
+                       </div>
+                    </div>
+                    <div style="flex:1;" onclick="hdpp('pp4')"></div>
+                 </div>
+                 <div style="flex:1;" onclick="hdpp('pp4')"></div>
+            </div>
+        </div> 
+        <!-- Categories --> 
+        <div class="mbA mbA4 col-s-9 " style="height:80vh; overflow-x:hidden; overflow-y:scroll; position:relative;" >
+
+            <div style="width:900px; overflow-x:scroll; margin:auto;">
+                <div style="width:100%; background-color:#FB7A44; display:flex;">
+                    <div style="padding:10px; color:white; font-size:20px;">
+                        Manage Categories 
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div style="padding:10px;">
+                         <div onclick="swpp('pp5')" style="padding:5px; background-color:white; color:#666666; cursor:pointer;">
+                             <span class="fa fa-plus-circle"></span> Add New Category
+                         </div>
+                    </div>
+                </div>
+                <div style="width:100%;  display:flex; ">
+                    <div class="tbh tbc3">
+                        Category ID <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div> 
+                    <div class="tbh tbc2">
+                        Avatar <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh tbc3">
+                        Name <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                        Description <span class="fa fa-sort"></span>
+                    </div>  
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                        Action <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="width:10px"></div>
+                </div>
+                <div>
+                    <div class="tbrA">
+                        <div class="tbr tbc3">
+                            Category <span>1</span>
+                        </div>
+                        <div style="flex:1;"></div> 
+                        <div class="tbh tbc2">
+                            <div class="tbim">
+                                <img src="assets/img/img.png" class="a" />
+                            </div>
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr tbc3">
+                            Speed Pedelec
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            Very Fast  
+                        </div> 
+                        <div style="flex:1;"></div>
+                        <div class="tba" >
+                            <div style="flex:2"></div>
+                             <div class="a">
+                                <span class="fa fa-edit" onclick="edtC(this)" ></span>
+                             </div>
+                             <div class="b">
+                                <span class="fa fa-trash"></span>
+                             </div>
+                             <div style="flex:2"></div>
+                        </div>
+                        <div style="width:10px"></div>
+                    </div>
+                    <div class="tbrB">
+                        <div class="tbr tbc3">
+                            Category <span>1</span>
+                        </div>
+                        <div style="flex:1;"></div> 
+                        <div class="tbh tbc2">
+                            <div class="tbim">
+                                <img src="assets/img/img.png" class="a" />
+                            </div>
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr tbc3">
+                            Rear Hub Motor
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr">
+                            Top Bikes 
+                        </div> 
+                        <div style="flex:1;"></div>
+                        <div class="tba" >
+                            <div style="flex:2"></div>
+                             <div class="a" onclick="edtC(this)" >
+                                <span class="fa fa-edit"></span>
+                             </div>
+                             <div class="b">
+                                <span class="fa fa-trash"></span>
+                             </div>
+                             <div style="flex:2"></div>
+                        </div>
+                        <div style="width:10px"></div>
+                    </div>
+                </div>
+                <div class="tbf">
+                    <div style="flex:1;"></div>
+                    <div class="a">
+                        Previous
+                    </div>
+                    <div class="b">
+                        1
+                    </div>
+                    <div class="a">
+                        Next
+                    </div>
+                </div>
+
+            </div> 
+            <div class="ppu" id="pp5" >
+                 <div style="flex:1;" onclick="hdpp('pp5')"></div>
+                 <div style="height:80vh; display:flex; flex-direction:column;">
+                    <div style="flex:1;" onclick="hdpp('pp5')"></div>
+                    <div style="width:300px; min-height:55vh; background-color:white;">
+                       <div class="pphd" >
+                            <div style="padding:10px;"> Add New Category</div>
+                            <div style="flex:1;"></div>
+                            <div style="padding:10px; cursor:pointer;" onclick="hdpp('pp5')"> <span class="fa fa-times"></span></div>
+                       </div>
+                       <div class="ppfm" style=" min-height:50vh;">
+
+                            <div class="pplb">
+                                Name 
+                            </div>
+                            <div class="ppin">
+                                <input type="text" class="a" placeholder="First Name" />
+                            </div>
+                            <div class="pplb">
+                                Description
+                            </div>
+                            <div class="ppin">
+                                <textarea class="c" ></textarea>
+                            </div>  
+                            <div class="pplb">
+                                Category Image
+                            </div> 
+                            <div class="ppin">
+                                <input type="file" class="b" />
+                            </div>
+
+                            <div style="flex:1;"></div>
+
+                            <div class="ppcn">
+                                <div style="width:10px;"></div>
+                                <div class="c">
+                                    1
+                                </div>
+                                <div style="flex:1;"></div>
+                                <div class="a" onclick="hdpp('pp3')">  Close </div>
+                                <div style="width:10px;"></div>
+                                <div class="b"> Add New Category </div>
+                                <div style="width:10px;"></div>
+                           </div>
+                       </div>
+                    </div>
+                    <div style="flex:1;" onclick="hdpp('pp5')"></div>
+                 </div>
+                 <div style="flex:1;" onclick="hdpp('pp5')"></div>
+            </div>
+            <div class="ppu" id="pp6" >
+                 <div style="flex:1;" onclick="hdpp('pp6')"></div>
+                 <div style="height:80vh; display:flex; flex-direction:column;">
+                    <div style="flex:1;" onclick="hdpp('pp6')"></div>
+                    <div style="width:300px; min-height:65vh; background-color:white;">
+                       <div class="pphd" >
+                            <div style="padding:10px;"> Edit Category </div>
+                            <div style="flex:1;"></div>
+                            <div style="padding:10px; cursor:pointer;" onclick="hdpp('pp6')"> <span class="fa fa-times"></span></div>
+                       </div>
+                       <div class="ppfm" style=" min-height:60vh;">
+ 
+                        <div class="pplb">
+                            Name 
+                        </div>
+                        <div class="ppin">
+                            <input type="text" class="a" placeholder="First Name" />
+                        </div>
+                        <div class="pplb">
+                            Description
+                        </div>
+                        <div class="ppin">
+                            <textarea class="c" ></textarea>
+                        </div>  
+                        <div class="pplb">
+                            Category Image
+                        </div>  
+                        <div class="ppin">
+                            <input type="file" class="b" />
+                        </div>
+                        <div style="padding-left:10px;">
+                            <img src="assets/img/img.png" style="width:60px; height:60px;" />
+                        </div>
+
+                        <div style="flex:1;"></div>
+
+                        <div class="ppcn">
+                            <div style="width:10px;"></div>
+                            <div class="c">
+                                1
+                            </div>
+                            <div style="flex:1;"></div>
+                            <div class="a" onclick="hdpp('pp6')">  Close </div>
+                            <div style="width:10px;"></div>
+                            <div class="b"> Update Category </div>
+                            <div style="width:10px;"></div>
+                       </div>
+ 
+                       </div>
+                    </div>
+                    <div style="flex:1;" onclick="hdpp('pp6')"></div>
+                 </div>
+                 <div style="flex:1;" onclick="hdpp('pp6')"></div>
+            </div>
+        </div>
+
+        <div class="mbA mbA1 col-6 col-s-9"> 
+            
+            <div class="mbl " >
+                <iframe class="force-mobile" src="layout.html"></iframe>
+                <div style="position:absolute; font-size:20px; top:470px; left:0px; margin-top:-40px; margin-left:45px;">
+                    <span class="fa fa-caret-left"></span>
+                </div>
+                <div style="position:absolute; font-size:12px; top:470px; left:0px; margin-top:-35px; margin-left:135px;">
+                    <span class="fa fa-circle"></span>
+                </div>
+                <div style="position:absolute; font-size:20px; top:470px; left:0px; margin-top:-40px; margin-left:230px;">
+                    <span class="fa fa-caret-right"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mbA mbA1 col-3 col-s-12">
+            <div class="aside">
+                <h2>What?</h2>
+                <p> Dees Mobile is a mobile application to purhase Electronic Bikes </p>
+                <h2>Where?</h2>
+                <p> The pick-up location is across Johannesburg</p>
+                <h2>How?</h2>
+                <p> Just download the app</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p> Thank you for using Dees Mobile @ the University of Johannesburg.</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!--    Title & Logo   -->
+    <title> Register - DEES </title>
+    <link rel="shortcut icon" type="image/png" href="assets/img/logo.ico">
+    <!-- Icons & Fonts -->
+    <link rel="stylesheet" href="assets/fonts/f_custom.css">
+    <link rel="stylesheet" href="assets/icons/i_font-awesome.css">
+    <link rel="stylesheet" href="assets/icons/i_custom.css">
+    <!--CSS-->
+    <link rel="stylesheet" href="assets/css/adjust.css">
+    <!--Javascript-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/linq.js"></script>
+    <script src="assets/js/adjust.js"></script>
+    <script src="assets/js/bridge.js"></script>
+    <!--Design Data--> 
+    
+    <!-- Firebase --> 
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+
+</head>
+<body>
+
+    <main class="adjust">
+
+        <div style="background-color: #EEEEEE; width:100%; min-height:400px;">
+            <div style="width: 100%; background-color: #EEEEEE; padding-top:4px; padding-bottom:4px;">
+                <div style="width:95%; display:flex; margin:auto; border-bottom-right-radius:40px; background-color:white;">
+                    <div style="border-bottom: solid #E48380 2px; padding: 5px; font-size: 35px; color: #E48380; font-weight: 600; ">
+                        Register
+                    </div>
+                    <div style="flex:1;"></div>
+                </div>
+            </div>
+            <div style="width: 250px; margin: auto;">
+                <img src="assets/img/logo.png" style="width: 250px; " />
+            </div>
+        </div>
+        <div style="background-color: white; border-top: solid #E48380 2px; margin-top: -100px; width: 100%; min-height: 500px; border-top-left-radius: 100px; border-top-right-radius: 100px; ">
+            <div style="text-align: center; color: #E48380; font-size:40px; font-weight:800; padding-top:15px;">
+                Welcome
+            </div>
+            <style>
+                .lbl {
+                    margin-top: 25px;
+                    margin-bottom: 5px;
+                    font-size: 35px;
+                    color: #4F4F4F;
+                    font-weight: 600;
+                }
+
+                .inpt {
+                    width: 100%;
+                    font-size: 40px;
+                    outline: none;
+                    border: none;
+                    text-align: center;
+                    color: #4F4F4F;
+                    border-bottom: solid #E48380 2px;
+                }
+
+                .inpi {
+                    padding-left: 10px;
+                    padding-right: 5px;
+                    color: red;
+                    font-weight: 900;
+                    font-size: 40px;
+                }
+            </style>
+            <div style="width:70%; margin:auto; margin-top:30px;">
+
+                <div class="lbl">  First Name  </div>
+                <div style="display:flex;">
+                    <div style="flex:1;"> <input class="inpt fname" type="text" /> </div> 
+                </div>
+
+                <div class="lbl">  Second Name  </div>
+                <div style="display:flex;">
+                    <div style="flex:1;"> <input class="inpt lname" type="text" /> </div>
+                    <div style="width:40px;"></div>
+                </div>
+
+                <div class="lbl">  Email </div>
+                <div style="display:flex;">
+                    <div style="flex:1;"> <input class="inpt email" type="text" /> </div> 
+                </div>
+
+                <div class="lbl">  ID Number </div>
+                <div style="display:flex;">
+                    <div style="flex:1;"> <input class="inpt idnum" type="text" /> </div> 
+                </div>
+
+                <div class="lbl">  Phone Number </div>
+                <div style="display:flex;">
+                    <div style="flex:1;"> <input class="inpt phone" type="text" /> </div> 
+                </div>
+
+                <div class="lbl">  Password  </div>
+                <div style="display:flex;">
+                    <div style="flex:1;"> <input class="inpt pass1" type="password" /> </div> 
+                </div>
+
+                <div class="lbl">  Confirm Password  </div>
+                <div style="display:flex;">
+                    <div style="flex:1;"> <input class="inpt pass2" type="password" /> </div> 
+                </div>
+                
+                <script> 
+                    // Your web app's Firebase configuration 
+                    var firebaseConfig = {
+                      apiKey: "AIzaSyBOJ6p-JlTOjmaS6uT58bEkKHoiLpnhYMc",
+                      authDomain: "sinovuyo-42012.firebaseapp.com",
+                      databaseURL: "https://sinovuyo-42012-default-rtdb.firebaseio.com",
+                      projectId: "sinovuyo-42012",
+                      storageBucket: "sinovuyo-42012.appspot.com",
+                      messagingSenderId: "171898232440",
+                      appId: "1:171898232440:web:b9d462bba794236095178d"
+                    };
+                    // Initialize Firebase
+                    firebase.initializeApp(firebaseConfig);
+                    firebase.analytics();
+
+                    var db = firebase.firestore();
+                    db.settings({timestampsInSnapshots: true});
+                    </script>
+                    <script> 
+                    function register()
+                    { 
+                       var valid = true;
+                       var data = 
+                       {
+                        "Idx" : 0 ,
+                        "FirstName" : $(".fname").val() ,
+                        "LastName" : $(".lname").val() ,
+                        "EmailAddress" : $(".email").val() ,
+                        "IDnumber" : $(".idnum").val() ,
+                        "Phone" : $(".phone").val() ,
+                        "Password" : $(".pass1").val() ,
+                        "UserType" : "Customer"
+                       }
+
+                       var conf = {
+                        "Password" : $(".pass2").val() 
+                       };
+                       //
+                       if(data.FirstName == "")
+                       {
+                          layout2("jAlert", "Enter First Name");
+                          valid = false;
+                       }
+                       else if(data.LastName == "")
+                       {
+                          layout2("jAlert", "Enter Last Name");
+                          valid = false;
+                       }
+                       else if(data.EmailAddress == "")
+                       {
+                          layout2("jAlert", "Enter Email Address");
+                          valid = false;
+                       }
+                       else if(data.IDnumber == "")
+                       {
+                          layout2("jAlert", "Enter ID Number ");
+                          valid = false;
+                       }
+                       else if(data.Phone == "")
+                       {
+                          layout2("jAlert", "Enter Phone ");
+                          valid = false;
+                       }
+                       else if(data.Password== "")
+                       {
+                          layout2("jAlert", "Enter Password ");
+                          valid = false;
+                       }
+                       else if(data.Password != conf.Password)
+                       {
+                          layout2("jAlert", "Passwords dont Match");
+                          valid = false;
+                       }
+
+                       // Error Handling 
+                          if(valid)
+                          {
+                              db.collection('UserTable').where("EmailAddress", "==", data.EmailAddress).get().then((snapshot) =>
+                              {
+                                if(snapshot.size == 0)
+                                { 
+                                   data.Idx = snapshot.size + 1; 
+                                   db.collection('UserTable').add(data);
+                                    layout3("jAlert2", "Registered" , "#2FB886");
+                                    setTimeout(function()
+                                    {
+                                       layout2("jDirect", "login.html"); 
+
+                                    } , 3000)
+                                }
+                                else
+                                {
+                                    layout2("jAlert", "Account Exists");
+                                }
+                              });
+                          } 
+                       //
+
+                    }
+                    </script> 
+
+                <div onclick="register()" style="width: 200px; cursor:pointer; margin:auto; padding: 10px; text-align: center; background-color: #E48380; border-radius:40px; margin-top:60px; color:white; font-size:40px; font-weight:900;">
+                    SUBMIT
+                </div>
+            </div>
+
+            <div style="width: 100%; min-height:60vh; ">
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

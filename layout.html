@@ -1,0 +1,302 @@
+<!--
+    Thubakgale MS - 201701870
+    27-10-2021
+ --> 
+<!DOCTYPE html>
+<html>
+<head>
+    <!--    Title & Logo   -->
+    <title> DEES </title>
+    <link rel="shortcut icon" type="image/png" href="assets/img/logo.ico">
+    <link href="assets/css/adjust.css" />
+    <!-- Icons & Fonts -->
+    <link rel="stylesheet" href="assets/fonts/f_custom.css">
+    <link rel="stylesheet" href="assets/icons/i_font-awesome.css">
+    <link rel="stylesheet" href="assets/icons/i_custom.css">
+    <!--CSS-->
+    <link rel="stylesheet" href="assets/css/adjust.css"> 
+    <!--Javascript-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bridge.js"></script> 
+    <script src="assets/js/adjust.js"></script>
+
+    <script src="assets/js/client/layout.js"></script>
+</head>
+<body>
+
+    <main> 
+        <!--1. Top Menu-->
+        <section>
+            <div class="tp_mn adjust" style="background-color: white; width: 100%; display: flex; font-size: 45px; color: darkgray; min-height: 60px; border-bottom: solid #A9A9A9;">
+                 <div style="padding:10px; cursor:pointer;"  onclick="getPop('mnu_src','left')" >
+                     <span class="fa fa-bars"></span>
+                 </div>
+                <div style="flex:1;"></div> 
+                <div name="cart.html" onclick="redirect(this)" >
+                    <span class="fa fa-shopping-cart"></span>
+                </div>
+            </div>
+        </section>
+        <!--2. Page-->
+        <section> 
+            <style>
+                #frm {
+                    width: 100%;
+                    outline: none;
+                    border: none;
+                    height: 100vh;
+                }
+            </style>
+            <iframe id="frm" src="" style="overflow:auto;" scrolling="yes"></iframe>
+        </section>
+
+        <!--3. Pop Up-->
+        <section>
+            <script>
+                function getPop(id, dr) {
+                    var a = $("#" + id);
+
+                    a.css("border", "none");
+
+                    if (dr == "left") {
+                        a.css("border-right", "solid 2px #E48380");
+                        a.css("top", "0px");
+                        a.css("left", "-100%");
+
+                        a.animate({ left: "0px" }, 800);
+                    }
+
+                    if (dr == "right") {
+                        a.css("border-left", "solid 2px #E48380");
+                        a.css("top", "0px");
+                        a.css("left", "100%");
+
+                        a.animate({ left: "0px" }, 800);
+                    }
+
+                    if (dr == "bottom") {
+                        a.css("border-right", "solid 2px #E48380");
+                        a.css("top", "100vh");
+                        a.css("left", "0px");
+
+                        a.animate({ top: "0px" }, 800);
+                    }
+
+                    if (dr == "top") {
+                        a.css("border-right", "solid 2px #E48380");
+                        a.css("top", "-100vh");
+                        a.css("left", "0px");
+
+                        a.animate({ top: "0px" }, 800);
+                    }
+                    if (dr == "center") {
+                        a.css("top", "0px");
+                        a.css("left", "0px");
+                        a.css("opacity", 0);
+
+                        a.animate({ opacity: 1 }, 800);
+                    }
+                }
+                function remPop(id, dr) {
+                    var a = $("#" + id);
+
+                    if (dr == "left") {
+                        a.animate({ left: "-100%" }, 800);
+                    }
+
+                    if (dr == "right") {
+                        a.animate({ left: "100%" }, 800);
+                    }
+
+                    if (dr == "bottom") {
+                        a.animate({ top: "100vh" }, 800);
+                    }
+
+                    if (dr == "top") {
+                        a.animate({ top: "-100vh" }, 800);
+                    }
+                    if (dr == "center") {
+                        a.animate({ opacity: 0 }, 800);
+                        a.css("left", "-100%");
+                    }
+
+                    setTimeout(function () { a.css("border", "none"); }, 800)
+                }
+            </script>
+
+            <div id="mnu_ext" class="adjust pop_up" style="position:fixed; top:0px; left:-100%; background-color:transparent; overflow:scroll; min-width:100%; max-width:100%; min-height:100vh; max-height:100vh; ">
+                <div style="display: flex; background-color: rgba(0,0,0,0.2) ">
+                    <div class="mnu_tab" onclick="remPop('mnu_ext','center')" style="flex:1; background-color:rgba(0,0,0,0.2); height:100vh;"></div>
+                    <div class="mnu_tab" style="width: 500px; height: 100vh; display: flex; flex-direction: column; background-color: rgba(0,0,0,0.2);">
+                        <div onclick="remPop('mnu_ext','center')" style="flex:1; "></div>
+                        <div style="width: 100%; height: 260px; text-align: center; background-color: white; border-radius: 30px; overflow: hidden; border: solid #E48380 2px;">
+                            <div style="padding-top: 15px; padding-bottom: 30px; background-color: #E48380; color:white; font-size:40px; ">
+                                Are you sure <br />
+                                you want to <br />
+                                exit ?
+                            </div>
+                            <style>
+                                .pop_opt {
+                                    padding: 10px;
+                                    flex: 1;
+                                    cursor: pointer;
+                                    font-weight: 600;
+                                }
+
+                                    .pop_opt:hover {
+                                        color: #E48380;
+                                    }
+                            </style>
+                            <div style="display: flex; width: 100%; color: #4F4F4F; font-size: 30px; padding-top:5px; padding-bottom:5px; ">
+                                <div class="pop_opt" onclick="remPop('mnu_ext','center')">
+                                    Cancel
+                                </div>
+                                <div class="pop_opt" onclick="exit_app()" style="border-left: solid #4F4F4F 2px;">
+                                    Confirm
+                                </div>
+                            </div>
+                        </div>
+                        <div onclick="remPop('mnu_ext','center')" style="flex:1;  "></div>
+                    </div>
+                    <div class="mnu_tab" onclick="remPop('mnu_ext','center')" style="flex:1; background-color:rgba(0,0,0,0.2); height:100vh;"></div>
+                </div>
+            </div>
+
+            
+            <div id="mnu_err" class="adjust pop_up" style="position:fixed; top:0px; left:-100%; background-color:transparent; overflow:scroll; min-width:100%; max-width:100%; min-height:100vh; max-height:100vh; ">
+                <div style="display: flex; background-color: rgba(0,0,0,0.2) ">
+                    <div class="mnu_tab" style="width: 98%; height: 100vh; display: flex; flex-direction: column; background-color: rgba(0,0,0,0.2);">
+                        <div onclick="remPop('mnu_err','center')" style="flex:1; "></div>
+                        <div style="width: 100%;  text-align: center; background-color: white;  overflow: hidden; border: solid #E48380 2px;">
+                            <style>
+                                .alert {
+                                  padding: 20px;
+                                  background-color: #f44336;
+                                  color: white;
+                                  font-size: 48px;
+                                }
+                                
+                                .closebtn {
+                                  margin-left: 15px;
+                                  color: white;
+                                  font-weight: bold;
+                                  float: right;
+                                  font-size: 82px;
+                                  line-height: 20px;
+                                  cursor: pointer;
+                                  transition: 0.3s;
+                                }
+                                
+                                .closebtn:hover {
+                                  color: black;
+                                }
+                                </style>
+                                <div class="alert">
+                                    <span class="closebtn" onclick="remPop('mnu_err','center')" >&times;</span> 
+                                    <span class="msg">
+                                        <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                                    </span>
+                                </div> 
+                        </div> 
+                        <div style="min-height:50px;">
+
+                        </div>
+                    </div>
+               </div>
+            </div>
+
+            <div id="mnu_src" class="adjust pop_up" style="position:fixed; top:0px; left:-100%; background-color:transparent; overflow:scroll; min-width:100%; max-width:100%; min-height:100vh; max-height:100vh; ">
+                <div style="display: flex; ">
+                    <div class="mnu_tab" style="flex: 2; background-color: #EEEEEE; height: 100vh; border-right: solid #E48380 2px ; overflow-y:scroll; ">
+
+                        <div style="display:flex;">
+                            <div style="padding:30px;">
+                                <img src="assets/img/logo.png" style="width:100px;" />
+                            </div>
+                            <div style="padding-top:40px; color:#E48380; font-size:50px;">
+                                DEEES.Mobile 
+                            </div>
+                            <div style="flex:1;"></div>
+                            <div style="padding: 40px; cursor: pointer; color: #E48380; font-size: 55px;">
+                                <span class="fa fa-user-circle"></span>
+                            </div>
+                        </div>
+
+                        <div class="mnu_das" style="width: 90%; min-height:80vh; padding-top:40px; background-color: #E48380; border-top-right-radius:80px; font-size: 50px; font-family: serif; font-weight: 700; color: white ">
+
+                            <div style="display:flex; width:70%; margin:auto; margin-bottom:30px; padding-right:30px; cursor:pointer;" name="home.html" onclick="redirect(this)">
+                                <div> <span class="fa fa-home"></span></div>
+                                <div style="flex:1; padding-left:50px;"> Home </div>
+                            </div>
+                            <div class="usm Customer" style="display:flex; width:70%; margin:auto; margin-bottom:30px; padding-right:30px; cursor:pointer;" name="c_dashboard.html" onclick="redirect(this)">
+                                <div> <span class="fa fa-shopware"></span></div>
+                                <div style="flex:1; padding-left:50px;"> Dashboard </div>
+                            </div>
+                            <div class="usm Admin" style="display:flex; width:70%; margin:auto; margin-bottom:30px; padding-right:30px; cursor:pointer;" name="a_dashboard.html" onclick="redirect(this)">
+                                <div> <span class="fa fa-shopware"></span></div>
+                                <div style="flex:1; padding-left:50px;"> Dashboard </div>
+                            </div>
+                            <div class="usm Visitor" style="display:flex; width:70%; margin:auto; margin-bottom:30px; padding-right:30px; cursor:pointer;" name="register.html" onclick="redirect(this)">
+                                <div> <span class="fa fa-table"></span></div>
+                                <div style="flex:1; padding-left:50px;"> Register </div>
+                            </div>
+                            <div class="usm Visitor" style="display:flex; width:70%; margin:auto; margin-bottom:30px; padding-right:30px; cursor:pointer;" name="login.html" onclick="redirect(this)">
+                                <div> <span class="fa fa-sign-in-alt"></span></div>
+                                <div style="flex:1; padding-left:50px;"> Login </div>
+                            </div>
+                            <div class="usm Customer Admin" style="display:flex; width:70%; margin:auto; margin-bottom:30px; padding-right:30px; cursor:pointer;" name="login.html" onclick="redirect(this)">
+                                <div> <span class="fa fa-sign-out-alt"></span></div>
+                                <div style="flex:1; padding-left:50px;"> Logout </div>
+                            </div>
+                            <div class="usm Customer Admin" style="display:flex; width:70%; margin:auto; margin-bottom:30px; padding-right:30px; cursor:pointer;" name="products.html" onclick="redirect(this)">
+                                <div> <span class="fa fa-shopware"></span></div>
+                                <div style="flex:1; padding-left:50px;"> Shop </div>
+                            </div>
+                            <div class="usm Customer Admin" style="display:flex; width:70%; margin:auto; margin-bottom:30px; padding-right:30px; cursor:pointer;" name="cart.html" onclick="redirect(this)">
+                                <div> <span class="fa fa-shopping-cart"></span></div>
+                                <div style="flex:1; padding-left:50px;"> Cart</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="mnu_tab" onclick="remPop('mnu_src','left')" style="flex:1; background-color:rgba(0,0,0,0.2); height:100vh;">
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="mnu_user" class="adjust pop_up" style="position:fixed; top:0px; left:-100%; background-color:transparent; overflow:scroll; min-width:100%; max-width:100%; min-height:100vh; max-height:100vh; ">
+                <div style="display: flex; background-color: rgba(0,0,0,0.2) ">
+                    <div class="mnu_tab" onclick="remPop('mnu_user','center')" style="flex:1; background-color:rgba(0,0,0,0.2); height:100vh;"></div>
+                    <div class="mnu_tab" style="flex:5; height: 100vh; display: flex; flex-direction: column; background-color: rgba(0,0,0,0.2);">
+                        <div onclick="remPop('mnu_user','center')" style="flex:1; "></div>
+                        <div style="width: 100%; height: 60vh; text-align: center; background-color: white; border-radius: 30px; overflow: hidden; border: solid #E48380 2px;">
+                             
+                            <div style="padding-top:20px; width:210px; margin:auto; ">
+                                <div style=" font-size: 30px; font-weight:700; color:#E48380; text-align:center; "> Select User </div>
+                                <select onchange="setUser(this)" style="width:100%; min-height:40px; font-size:20px; text-align:center; outline:none; border:solid 4px #A9A9A9"> 
+                                    <option selected value="Visitor" > Visitor </option>
+                                    <option value="Customer" > Customer </option>
+                                    <option value="Admin" > Admin </option>
+                                </select> 
+                            </div>
+                        </div>
+                        <div onclick="remPop('mnu_user','center')" style="flex:1;  "></div>
+                    </div>
+                    <div class="mnu_tab" onclick="remPop('mnu_user','center')" style="flex:1; background-color:rgba(0,0,0,0.2); height:100vh;"></div>
+                </div>
+            </div>
+
+        </section>
+
+        <!--4. Fixed-->
+        <section>
+            <div class="adjust " onclick="getPop('mnu_user','center')" style="position:fixed; color:white; cursor:pointer; text-align:center; font-size:40px; padding-top:10px; top:80%; left:100%; margin-left:-100px; width:80px; min-height:70px; border-radius:10px; background-color:#E48380;">
+                <span class="fa fa-cog"></span>
+            </div>
+        </section>
+    </main>  
+
+</body>
+</html>

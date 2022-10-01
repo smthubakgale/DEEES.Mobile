@@ -1,0 +1,1070 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!--    Title & Logo   -->
+    <title> Products - DEES </title>
+    <link rel="shortcut icon" type="image/png" href="assets/img/logo.ico">
+    <!-- Icons & Fonts -->
+    <link rel="stylesheet" href="assets/fonts/f_custom.css">
+    <link rel="stylesheet" href="assets/icons/i_font-awesome.css">
+    <link rel="stylesheet" href="assets/icons/i_custom.css">
+    <!--CSS-->
+    <link rel="stylesheet" href="assets/css/adjust.css">
+    <!--Javascript-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/linq.js"></script>
+    <script src="assets/js/adjust.js"></script>
+    <script src="assets/js/easy.qrcode.min.js"></script>
+    <!--Crucial Data-->
+    <script src="assets/data/mylogo.js"></script>
+    <!--Design Data-->
+    <script src="assets/data/producttable.js"></script>
+    <script src="assets/data/categtable.js"></script>
+    <script src="assets/data/suppliertable.js"></script>
+    <script src="assets/data/liketable.js"></script>
+    <script src="assets/data/ratetable.js"></script>
+    <script src="assets/data/carttable.js"></script>
+
+    <script src="assets/js/client/products.js"></script>
+</head>
+<body>
+
+    <main class="adjust"> 
+        <!--0. Banner-->
+        <section>
+            <div style="width: 100%; background-color: #EEEEEE; padding-top:4px; padding-bottom:10px;">
+                <div style="width:95%; display:flex; margin:auto; border-bottom-right-radius:40px; background-color:white;">
+                    <div style="border-bottom: solid #E48380 2px; padding: 5px; font-size: 45px; color: #E48380; font-weight:800; ">
+                        Products
+                    </div>
+                    <div style="flex:1;"></div>
+                </div>
+            </div>
+        </section>
+        <!-- 1. Tabs -->
+        <section>
+            <div style="width: 100%; background-color: #EEEEEE; padding-top:4px; padding-bottom:10px;">
+                <div style="width: 95%; margin:auto; display: flex; border-bottom: solid #E48380 2px; text-align: center;">
+                    <div style="flex:1;"></div> 
+                    <div onclick="loadBS()" title="Basic Search" style="border-top: solid #E48380 2px; cursor:pointer; padding: 5px; width:80px; font-size: 45px; color: #E48380; font-weight: 800; ">
+                        <span class="fa fa-search"></span>
+                    </div>
+                    <div onclick="loadScan()" title="QR Code Search" style="border-top: solid #E48380 2px; cursor: pointer; padding: 5px; width: 80px; font-size: 45px; color: #E48380; font-weight: 800; ">
+                        <span class="fa fa-qrcode"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--2. Results-->
+        <section> 
+
+            <div class="s2" res="" style="width:100%; padding-top:10px; display:none;">
+
+                <div style="min-width: 660px; max-width: 660px; margin: auto; margin-top:60px; overflow:hidden; padding:5px; min-height: 820px; border: solid #E48380 4px; border-radius: 40px; ">
+                    <div style="width:100%; position:relative; margin:auto; text-align:center;  background-color:white; border-top-left-radius:20px; border-top-right-radius:20px; min-height:820px;">
+                        <div style="width:100%; overflow:hidden;">
+                            <img class="prod_img" src="assets/img/img.png" style="width: 100%; height: 550px; border-top-left-radius: 20px; border-top-right-radius: 20px;" />
+                        </div>
+                        <div class="prod_name" style="margin-top: 20px; color: #3B396D; font-size:40px; font-weight:800;">
+                            Volks Wagen Golf
+                        </div>
+                        <div class="prod_categ" style="margin-top: 13px; color: #8E8997; font-size:28px; font-weight:700;">
+                            Fast
+                        </div>
+
+                        <style>
+                            .vbtn {
+                                color: white;
+                                background-color: #E48380;
+                            }
+
+                                .vbtn:hover {
+                                    background-color: #E7540E;
+                                }
+                        </style>
+                        <div class="vbtn" style="margin: auto; margin-top: 30px; padding:17px; border-radius:40px; width: 230px; font-size:40px; font-weight:800; ">
+                            View Details
+                        </div>
+
+                        <div style="position: absolute; color: white; top: 10px; left: 100%; overflow: hidden; text-align: center; margin-left: -140px; border-radius: 50%; width: 130px; height: 130px; background-color: #E7540E; ">
+                            <div style="padding:20px; padding-top:40px; font-size:30px; font-weight:800;">
+                                R <span class="prod_prc"> 600  </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width:90%; margin:auto; margin-top:13px; background-color:white; min-height:160px; border-bottom-right-radius:20px; border-bottom-left-radius:20px;">
+                        <div style="color: #8E8997; text-align:center; padding-top:17px; font-size:30px; font-weight:600;">
+                            More Information :
+                        </div>
+                        <div style="padding-top:8px; display:flex;">
+                            <div style="flex:1;"></div>
+                            <style>
+                                .crc {
+                                    color: #E7540E;
+                                    border: solid #E7540E 3px;
+                                    cursor: pointer;
+                                }
+
+                                    .crc:hover {
+                                        color: #E48380;
+                                        border: solid #E48380 3px;
+                                    }
+                            </style>
+                            <div class="crc" style="width: 80px; height: 80px; position:relative; border-radius: 50%; text-align: center; font-size: 45px; ">
+                                <span class="fa fa-thumbs-up" style="margin-top:15px;"></span>
+                                <div class="prod_like" style="position: absolute; width: 40px; height: 40px; background-color: white; left: 50px; top: 50px; border-radius: 50%; font-size: 35px; color: #3B396D;">
+                                    50
+                                </div>
+                            </div>
+                            <div style="flex:1;"></div>
+                            <div class="crc" name="1" meth="rate_product" onclick="_rate(this)" style="width: 80px; height: 80px; position:relative; border-radius: 50%; text-align: center; font-size: 45px; ">
+                                <span class="fa fa-star" style="margin-top:15px;"></span>
+                                <div class="prod_rate" style="position: absolute; width: 40px; height: 40px; background-color: white; left: 50px; top: 50px; border-radius: 50%; font-size: 35px; color: #3B396D;">
+                                    50
+                                </div>
+                            </div>
+                            <div style="flex:1;"></div>
+                            <div class="crc" onclick="cartAdd(this)" style="width: 80px; height: 80px; position:relative; border-radius: 50%; text-align: center; font-size: 45px; ">
+                                <span class="fa fa-shopping-cart" style="margin-top:15px;"></span>
+                                <div class="prod_cart" style="position: absolute; width: 40px; height: 40px; background-color: white; left: 50px; top: 50px; border-radius: 50%; font-size: 35px; color: #3B396D;">
+                                    0
+                                </div>
+                            </div>
+                            <div style="flex:1;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--0. Footer-->
+        <section>
+            <div style="min-height:60vh;"></div>
+        </section>
+        <!--z. Pop Ups-->
+        <section>
+            <script>
+                function getPop(id, dr) {
+                    var a = $("#" + id);
+
+                    a.css("border", "none");
+
+                    if (dr == "left") {
+                        a.css("border-right", "solid 2px #E48380");
+                        a.css("top", "0px");
+                        a.css("left", "-100%");
+
+                        a.animate({ left: "0px" }, 800);
+                    }
+
+                    if (dr == "right") {
+                        a.css("border-left", "solid 2px #E48380");
+                        a.css("top", "0px");
+                        a.css("left", "100%");
+
+                        a.animate({ left: "0px" }, 800);
+                    }
+
+                    if (dr == "bottom") {
+                        a.css("border-right", "solid 2px #E48380");
+                        a.css("top", "100vh");
+                        a.css("left", "0px");
+
+                        a.animate({ top: "0px" }, 800);
+                    }
+
+                    if (dr == "top") {
+                        a.css("border-right", "solid 2px #E48380");
+                        a.css("top", "-100vh");
+                        a.css("left", "0px");
+
+                        a.animate({ top: "0px" }, 800);
+                    }
+
+                    if (dr == "center") {
+                        a.css("top", "0px");
+                        a.css("left", "0px");
+                        a.css("opacity", 0);
+
+                        a.animate({ opacity: 1 }, 800);
+                    }
+                }
+                function remPop(id, dr) {
+                    var a = $("#" + id);
+
+                    if (dr == "left") {
+                        a.animate({ left: "-100%" }, 800);
+                    }
+
+                    if (dr == "right") {
+                        a.animate({ left: "100%" }, 800);
+                    }
+
+                    if (dr == "bottom") {
+                        a.animate({ top: "100vh" }, 800);
+                    }
+
+                    if (dr == "top") {
+                        a.animate({ top: "-100vh" }, 800);
+                    }
+
+                    if (dr == "center") {
+                        a.animate({ opacity: 0 }, 800);
+                        a.css("left", "-100%");
+                    }
+
+                    setTimeout(function () { a.css("border", "none"); }, 800)
+                }
+            </script>
+
+            <div id="rat_itm" name="2" meth="rate_product" class="pop_up" style="position:fixed; top:0px; left:-100%; background-color:white; overflow:scroll; min-width:100%; max-width:100%; min-height:100vh; max-height:100vh; ">
+                <div style="display: flex; padding-top:10px; font-size: 45px; color: #E48380; font-weight: 800;">
+                    <div onclick="remPop('rat_itm','center')" style="padding-left:10px;">
+                        <span class="fa fa-arrow-circle-left"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div style="border-top: solid #E48380 2px; border-bottom: solid #E48380 2px; padding:15px; padding-top:5px; padding-bottom:0px; ">
+                        Rate
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div style="padding-right:10px; width:80px; position:relative;">
+                        <img src="assets/img/img4.png" style="width:80px; position:absolute;" />
+                    </div>
+                </div>
+                <div style="width: 100%; min-height: 100vh; position:relative; padding-top:10px; border-top-right-radius: 150px; background-color: #EEEEEE;">
+                    <style>
+                        .rate {
+                            padding: 10px;
+                            text-align: center;
+                            color: #213238;
+                            font-size:60px;
+                            padding-top:130px;
+                        }
+
+                            .rate span {
+                                padding-left: 5px;
+                                padding-right: 5px;
+                            }
+
+                                .rate span:hover {
+                                    cursor: pointer;
+                                }
+                    </style>
+                    <div class="rate">
+                        <span name="1" class="fa fa-star str" onclick="hgt(this)"></span>
+                        <span name="2" class="fa fa-star str" onclick="hgt(this)"></span>
+                        <span name="3" class="fa fa-star str" onclick="hgt(this)"></span>
+                        <span name="4" class="fa fa-star str" onclick="hgt(this)"></span>
+                        <span name="5" class="fa fa-star str" onclick="hgt(this)"></span>
+                    </div>
+                    <script>
+                        function _rate(tag)
+                        {
+                            var a = $(tag).attr("name");
+                            var b = $(tag).attr("meth");
+
+                            $("#rat_itm").attr("name", a);
+                            $("#rat_itm").attr("meth", b);
+
+                            $("#rat_itm").find(".rate").css("color", "#2A393F");
+
+                            getPop('rat_itm', 'center');
+                        }
+                        function hgt(param)
+                        { 
+                            var arr = $(param).parent().children();
+                            var rate = false;
+                            var val = 0;
+
+                            $.each(arr, (index, item) => {
+
+                                if ($(item).attr("name") == $(param).attr("name")) {
+                                    rate = true;
+                                    val = index;
+                                }
+
+                                if (rate) {
+                                    $(item).css("color", "#2A393F");
+                                }
+                                else {
+                                    $(item).css("color", "#E48380");
+                                }
+                            });
+                            //
+                            val++;
+
+                            var id = $("#rat_itm").attr("name");
+                            var method = $("#rat_itm").attr("meth");
+
+                            $.globalEval(method + "(" + id + "," + val.toString() + ")")
+                            //
+                            $(param).css("color", "#E48380");
+                            remPop('rat_itm', 'center');
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <div id="crt_spc" class="pop_up" style="position:fixed; top:0px; left:-100%; background-color:white; overflow:scroll; min-width:100%; max-width:100%; min-height:100vh; max-height:100vh; ">
+                <div style="display: flex; padding-top:10px; font-size: 45px; color: #E48380; font-weight: 800;">
+                    <div onclick="remPop('crt_spc','left')" style="padding-left:10px;">
+                        <span class="fa fa-arrow-circle-left"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div style="border-top: solid #E48380 2px; border-bottom: solid #E48380 2px; padding:15px; padding-top:5px; padding-bottom:0px; ">
+                        Specify Purchase
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div style="padding-right:10px; width:80px; position:relative;">
+                        <img src="assets/img/img4.png" style="width:80px; position:absolute;" />
+                    </div>
+                </div>
+                <div class="mnu_das" style="width: 100%; min-height: 100vh; position:relative; padding-top:10px; border-top-right-radius: 150px; background-color: #EEEEEE;">
+                    <script>
+                        function goNext(tag) {
+                            var a = $(tag).parent().parent();
+                            var b = a.next();
+
+                            a.css("left", "-100%");
+                            b.css("left", "0px");
+                        }
+                        function goBack(tag) {
+                            var a = $(tag).parent().parent();
+                            var b = a.prev();
+
+                            a.css("left", "-100%");
+                            b.css("left", "0px");
+                        }
+                    </script>
+                    <div style="position:absolute; width:100%; ">
+                        <div style="width: 60%; margin: auto; padding-top: 30px; font-weight: 700; color: #3B396D;">
+                            <div style="text-align:center; font-size:40px; padding:20px;">
+                                <u>Available Use Times</u>
+                            </div>
+                            <div style="display:flex; font-size:40px; cursor:pointer; margin-top:20px;">
+                                <div style="width:150px;"> Start </div>
+                                <div style="flex:1;">  : <span> 00-00-0000</span> </div>
+                            </div>
+                            <div style="display:flex; font-size:40px; cursor:pointer; margin-top:5px;">
+                                <div style="width:150px;"> End </div>
+                                <div style="flex:1;">  : <span> 00-00-0000</span> </div>
+                            </div>
+                        </div>
+                        <div style="padding-top:30px; padding-bottom:30px; display:flex; font-size:35px;">
+                            <div style="flex:3;"></div>
+                            <div onclick="goNext(this)" style="width: 150px; color: white; font-weight: 500; margin: auto; background-color:#E48380; padding:10px; text-align:center; border-radius:20px; ">
+                                Next
+                            </div>
+                            <div style="flex:1;"></div>
+                        </div>
+                    </div>
+
+                    <div style="position: absolute; width:100%; left:-100%;">
+                        <div style="width: 60%; margin: auto; padding-top: 30px; font-weight: 700; color: #3B396D;">
+                            <div style="text-align:center; font-size:40px; padding:20px; margin-top:30px;">
+                                <u>Request Use Times</u>
+                            </div>
+                        </div>
+                        <div style="width:80%; margin:auto; min-height:200px; border-radius:30px; background-color:white; padding:25px; font-size:40px; ">
+
+                            <div style="display:flex;">
+                                <div style="width: 150px; color: #484848; font-weight: 500; ">
+                                    Start
+                                </div>
+                                <div style="flex:1;">
+                                    <input type="datetime-local" style="width:90%; text-align:center; outline:none; font-size:40px; border:solid gray 2px; border-radius:10px;" />
+                                </div>
+                            </div>
+
+                            <div style="display:flex; padding-top:30px;">
+                                <div style="width: 150px; color: #484848; font-weight: 500; ">
+                                    End
+                                </div>
+                                <div style="flex:1;">
+                                    <input type="datetime-local" style="width: 90%; text-align: center; outline: none; font-size: 40px; border: solid gray 2px; border-radius: 10px;" />
+                                </div>
+                            </div>
+
+                            <div style="padding-top: 30px; text-align: center; color: #E48380; padding-bottom:20px;">
+                                dates must be in range
+                            </div>
+                        </div>
+
+                        <div style="padding-top:30px; padding-bottom:30px; display:flex; font-size:35px;">
+                            <div style="flex:1;"></div>
+                            <div onclick="goBack(this)" style="width: 150px; color: white; font-weight: 500; margin: auto; background-color: #F67E22; padding: 10px; text-align: center; border-radius: 20px; ">
+                                Back
+                            </div>
+                            <div style="flex:1;"></div>
+                            <div onclick="goNext(this)" style="width: 150px; color: white; font-weight: 500; margin: auto; background-color:#E48380; padding:10px; text-align:center; border-radius:20px; ">
+                                Next
+                            </div>
+                            <div style="flex:1;"></div>
+                        </div>
+                    </div>
+
+                    <div style="position: absolute; width: 100%; left: -100%;">
+                        <div style="text-align: center; font-size: 40px; padding: 20px; margin-top: 30px; font-weight: 700; color: #3B396D;">
+                            <u> Start Location </u>
+                        </div>
+
+                        <div style="width:80%; margin:auto; min-height:200px; border-radius:30px; background-color:white; padding:25px; font-size:40px; ">
+
+                            <div style="display:flex;">
+                                <div style="width: 150px; color: #484848; font-weight: 500; ">
+                                    Street Address
+                                </div>
+                                <div style="flex:1;">
+                                    <input type="text" style="width:90%; text-align:center; outline:none; font-size:40px; border:solid gray 2px; border-radius:10px;" />
+                                </div>
+                            </div>
+
+                            <div style="display:flex; padding-top:30px;">
+                                <div style="width: 150px; color: #484848; font-weight: 500; ">
+                                    City
+                                </div>
+                                <div style="flex:1;">
+                                    <input type="text" style="width: 90%; text-align: center; outline: none; font-size: 40px; border: solid gray 2px; border-radius: 10px;" />
+                                </div>
+                            </div>
+                            <div style="display:flex; padding-top:30px;">
+                                <div style="width: 150px; color: #484848; font-weight:500; ">
+                                    Country
+                                </div>
+                                <div style="flex:1;">
+                                    <input type="text" value="South Africa" style="width: 90%; text-align: center; outline: none; font-size: 40px; border: solid gray 2px; border-radius: 10px;" />
+                                </div>
+                            </div>
+                            <div style="padding-top:30px; padding-bottom:30px;">
+                                <div style="width: 150px; color: white; font-weight: 500; margin: auto; background-color: #E48380; padding: 10px; text-align: center; border-radius: 15px; ">
+                                    Verify
+                                </div>
+                            </div>
+
+                            <hr style="border: none; border-bottom: solid #E48380 4px; width:60%; margin:auto;" />
+
+                            <div style="width:90%; margin-left:5%; display:flex; padding-top:20px; padding-bottom:30px; font-size:40px; ">
+                                <div style="flex:1;">
+                                    <label>Latitide:</label>
+                                    <input style="width: 90%; font-size: 35px; border: solid #B9B9B9 3px; outline:none;" type="text" readonly />
+                                </div>
+                                <div style="flex:1;">
+                                    <label>Langitude:</label>
+                                    <input style="width: 90%; font-size: 35px; border: solid #B9B9B9 3px; outline:none;" type="text" readonly />
+                                </div>
+                            </div>
+
+                            <div class="s_map s_map1" style="width:100%; min-height:400px;position: relative; ">
+                                <div id="map" class="map map_cnt">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding-top:30px; padding-bottom:30px; display:flex; font-size:35px;">
+                            <div style="flex:1;"></div>
+                            <div onclick="goBack(this)" style="width: 150px; color: white; font-weight: 500; margin: auto; background-color: #F67E22; padding: 10px; text-align: center; border-radius: 20px; ">
+                                Back
+                            </div>
+                            <div style="flex:1;"></div>
+                            <div onclick="goNext(this)" style="width: 150px; color: white; font-weight: 500; margin: auto; background-color:#E48380; padding:10px; text-align:center; border-radius:20px; ">
+                                Next
+                            </div>
+                            <div style="flex:1;"></div>
+                        </div>
+                    </div>
+
+                    <div style="position: absolute; width: 100%; left: -100%;">
+                        <div style="text-align: center; font-size: 40px; padding: 20px; margin-top: 30px; font-weight: 700; color: #3B396D;">
+                            <u> Destination </u>
+                        </div>
+
+                        <div style="width:80%; margin:auto; min-height:200px; border-radius:30px; background-color:white; padding:25px; font-size:40px; ">
+
+                            <div style="display:flex;">
+                                <div style="width: 150px; color: #484848; font-weight: 500; ">
+                                    Street Address
+                                </div>
+                                <div style="flex:1;">
+                                    <input type="text" style="width:90%; text-align:center; outline:none; font-size:40px; border:solid gray 2px; border-radius:10px;" />
+                                </div>
+                            </div>
+
+                            <div style="display:flex; padding-top:30px;">
+                                <div style="width: 150px; color: #484848; font-weight: 500; ">
+                                    City
+                                </div>
+                                <div style="flex:1;">
+                                    <input type="text" style="width: 90%; text-align: center; outline: none; font-size: 40px; border: solid gray 2px; border-radius: 10px;" />
+                                </div>
+                            </div>
+                            <div style="display:flex; padding-top:30px;">
+                                <div style="width: 150px; color: #484848; font-weight:500; ">
+                                    Country
+                                </div>
+                                <div style="flex:1;">
+                                    <input type="text" value="South Africa" style="width: 90%; text-align: center; outline: none; font-size: 40px; border: solid gray 2px; border-radius: 10px;" />
+                                </div>
+                            </div>
+                            <div style="padding-top:30px; padding-bottom:30px;">
+                                <div style="width: 150px; color: white; font-weight: 500; margin: auto; background-color: #E48380; padding: 10px; text-align: center; border-radius: 15px; ">
+                                    Verify
+                                </div>
+                            </div>
+
+
+                            <hr style="border: none; border-bottom: solid #E48380 4px; width:60%; margin:auto;" />
+
+                            <div style="width:90%; margin-left:5%; display:flex; padding-top:20px; padding-bottom:30px; font-size:40px; ">
+                                <div style="flex:1;">
+                                    <label>Latitide:</label>
+                                    <input style="width: 90%; font-size: 35px; border: solid #B9B9B9 3px; outline:none;" type="text" readonly />
+                                </div>
+                                <div style="flex:1;">
+                                    <label>Langitude:</label>
+                                    <input style="width: 90%; font-size: 35px; border: solid #B9B9B9 3px; outline:none;" type="text" readonly />
+                                </div>
+                            </div>
+
+                            <div class="s_map s_map1" style="width:100%; min-height:400px;position: relative; ">
+                                <div id="map" class="map map_cnt">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding-top:30px; padding-bottom:30px; display:flex; font-size:35px;">
+                            <div style="flex:1;"></div>
+                            <div onclick="goBack(this)" style="width: 150px; color: white; font-weight: 500; margin: auto; background-color: #F67E22; padding: 10px; text-align: center; border-radius: 20px; ">
+                                Back
+                            </div>
+                            <div style="flex:1;"></div>
+                            <div onclick="goNext(this)" style="width: 150px; color: white; font-weight: 500; margin: auto; background-color:#E48380; padding:10px; text-align:center; border-radius:20px; ">
+                                Next
+                            </div>
+                            <div style="flex:1;"></div>
+                        </div>
+                    </div> 
+                    <div style="position: absolute; width: 100%; left: -100%;">
+                        <div style="width: 60%; margin: auto; padding-top: 30px; font-weight: 700; color: #3B396D;">
+                            <div style="text-align: center; font-size: 40px; padding: 20px; margin-top: 30px; font-weight: 700; color: #3B396D;">
+                                <u> Estimations </u>
+                            </div>
+
+                            <div style="display:flex; font-size:40px; cursor:pointer; margin-top:20px;">
+                                <div style="width:300px;"> Travel Time </div>
+                                <div style="flex:1;">  : <span> 00:00:00 </span> </div>
+                            </div>
+                            <div style="display:flex; font-size:40px; cursor:pointer; margin-top:5px;">
+                                <div style="width:300px;"> Est. Distance </div>
+                                <div style="flex:1;">  : <span> 125 km </span> </div>
+                            </div>
+                            <div style="display:flex; font-size:40px; cursor:pointer; margin-top:5px;">
+                                <div style="width:300px;"> Est. Price </div>
+                                <div style="flex:1;">  :  R <span> 10 </span> </div>
+                            </div>
+
+                            <div style="padding-top:30px; padding-bottom:30px; font-size:32px;">
+                                <div style="width: 250px; color: white; font-weight: 500; margin: auto; border: solid #E48380 3px; color: #E48380; padding:13px; text-align: center; border-radius: 20px; ">
+                                    ADD TO CART
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding-top:30px; padding-bottom:30px; display:flex; font-size:35px;">
+                            <div style="flex:1;"></div>
+                            <div onclick="goBack(this)" style="width: 150px; color: white; font-weight: 500; margin: auto; background-color: #F67E22; padding: 10px; text-align: center; border-radius: 20px; ">
+                                Back
+                            </div>
+                            <div style="flex:3;"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="qrc_src" class="pop_up" style="position:fixed; top:0px; left:-100%; background-color:white; overflow:scroll; min-width:100%; max-width:100%; min-height:100vh; max-height:100vh; ">
+                <div style="display: flex; padding-top:10px; font-size: 45px; color: #E48380; font-weight: 800;">
+                    <div onclick="remPop('qrc_src','left')" style="padding-left:10px;">
+                        <span class="fa fa-arrow-circle-left"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div style="border-top: solid #E48380 2px; border-bottom: solid #E48380 2px; padding:15px; padding-top:5px; padding-bottom:0px; ">
+                        Generate QR Code
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div style="padding-right:10px; width:80px; position:relative;">
+                        <img src="assets/img/img4.png" style="width:80px; position:absolute;" />
+                    </div>
+                </div>
+                <div class="pop_up" style="width: 100%; min-height: 100vh; padding-top:60px; border-top-right-radius: 150px; background-color: #EEEEEE;">
+                    <div id="qr_canv1" style="margin:auto; width:400px; margin:auto;">
+
+                    </div>
+                    <div style="display:flex; font-size:30px; margin-top:30px;">
+                        <div style="flex:1;"></div>
+                        <div onclick="saveQR()" style="padding: 10px; color: #E48380; border: solid #E48380 2px; border-radius:15px; font-weight:700;">
+                            Download <span class="fa fa-save"></span>
+                        </div>
+                        <div style="flex:1;"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="bsc_src" class="pop_up" style="position:fixed; top:0px; left:-100%; background-color:white; overflow:scroll; min-width:100%; max-width:100%; min-height:100vh; max-height:100vh; ">
+                <div style="display: flex; padding-top:10px; font-size: 45px; color: #E48380; font-weight: 800;">
+                    <div onclick="remPop('bsc_src','left')" style="padding-left:10px;">
+                        <span class="fa fa-arrow-circle-left"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div style="border-top: solid #E48380 2px; border-bottom: solid #E48380 2px; padding:15px; padding-top:5px; padding-bottom:0px; ">
+                        Basic Search
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div style="padding-right:10px; width:80px; position:relative;">
+                        <img src="assets/img/img4.png" style="width:80px; position:absolute;" />
+                    </div>
+                </div>
+                <div class="pop_up" style="width: 100%; min-height: 100vh; padding-top:30px; border-top-right-radius: 150px; background-color: #EEEEEE;">
+
+                    <div style="width: 70%; margin: auto; padding-top: 10px; min-height: 40vh; border-radius: 30px; border: solid #E48380 1px; background-color:white; ">
+
+                        <div>
+                            <div style="text-align: center; padding: 10px; font-weight: 800; font-size: 30px; color: #3B396D;">
+                                Search By Name
+                            </div>
+                            <script>
+                                function loadfill(tag) {
+                                    var v = $(tag).val();
+                                    var q = $(tag).parent().parent().parent().parent();
+                                    var w = $(tag).parent().parent().parent();
+
+                                    if (v == "") {
+                                        q.find(".aut_cls").css("display", "none");
+                                    }
+                                    else {
+                                        q.find(".aut_cls").css("display", "block");
+                                    }
+
+                                    var b1 = w.find(".aut_dat").html();
+                                    var b = JSON.parse(b1);
+
+                                    var c = $("<div/>").html(w.find(".aut_res").children().first().clone()).html();
+                                    var str = "";
+                                    $.each(b, (k, item) => {
+                                        var t = item.substr(0, v.length).toUpperCase();
+                                        if (t == v.toUpperCase() && v.length != 0) {
+                                            var d = $("<div/>").html(c);
+                                            d.find(".aut_opt").html(item);
+                                            str += d.html();
+                                        }
+                                    });
+
+                                    if (str == "") {
+                                        w.find(".aut_res").css("display", "none");
+                                    }
+                                    else {
+                                        w.find(".aut_res").html(str);
+                                        w.find(".aut_res").css("display", "block");
+                                    }
+                                }
+                            </script>
+                            <style>
+                                .aut_dat {
+                                    display: none;
+                                }
+
+                                .aut_opt {
+                                    cursor: pointer;
+                                    padding: 2px;
+                                    padding-left: 10px;
+                                    font-size: 30px;
+                                    border-bottom: solid #CCCEDB 1px;
+                                }
+
+                                    .aut_opt:hover {
+                                        background-color: #E48380;
+                                        color: white;
+                                    }
+
+                                .aut_res {
+                                    position: absolute;
+                                    left: 0px;
+                                    z-index: 99;
+                                    background-color: white;
+                                    border: solid #CCD6EB 1.5px;
+                                    width: 100%;
+                                    min-height: 10px;
+                                    display: none;
+                                }
+
+                                .aut_sr {
+                                    display: none;
+                                    width: 100%;
+                                    padding-top: 10px;
+                                    font-size: 30px;
+                                }
+                            </style>
+                            <div class="src_by_name">
+                                <div style="width:80%; margin:auto; position:relative;">
+                                    <div style="width: 100%; display: flex; border-bottom: solid #EDACAA 2px;">
+                                        <div style="flex:1;">
+                                            <input oninput="loadfill(this)" type="text" style="width: 100%; text-align: center; outline: none; border: none;  font-size:30px; " />
+                                        </div>
+                                        <div style="padding-left: 10px; color: #EDACAA; cursor: pointer; font-size: 20px;">
+                                            <span class="ic i-cross"></span>
+                                        </div>
+                                    </div>
+                                    <div class="aut_res">
+                                        <div class="aut_opt" onclick="setres1(this)">
+                                            result 1
+                                        </div>
+                                    </div>
+                                    <div class="aut_dat">[ "result 1" , "result2" , "option 1"]</div>
+                                    <div class="aut_sr">
+                                        <div class="rs1">
+                                            result 1
+                                        </div>
+                                        <div style="flex:1;"></div>
+                                        <div style="color: #EDACAA; " onclick="getResults(this)">
+                                            <span class="fa fa-search"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="text-align: center; padding: 5px; margin-top:15px; font-weight: 800; font-size: 30px; color: #3B396D;">
+                                Search By Price
+                            </div>
+                            <div class="src_by_price" style="width:85%; margin:auto; margin-top:10px;">
+
+                                <style>
+                                    /*:: Single */
+                                    .slidecontainer {
+                                        width: 100%;
+                                    }
+
+                                    .slider {
+                                        -webkit-appearance: none;
+                                        width: 100%;
+                                        height: 15px;
+                                        border-radius: 5px;
+                                        background: #d3d3d3;
+                                        outline: none;
+                                        opacity: 0.7;
+                                        -webkit-transition: .2s;
+                                        transition: opacity .2s;
+                                    }
+
+                                        .slider:hover {
+                                            opacity: 1;
+                                        }
+
+                                        .slider::-webkit-slider-thumb {
+                                            -webkit-appearance: none;
+                                            width: 25px;
+                                            height: 25px;
+                                            border-radius: 50%;
+                                            background: #4CAF50;
+                                            cursor: pointer;
+                                        }
+                                    /*:: Dual */
+
+                                    [slider] {
+                                        position: relative;
+                                        height: 14px;
+                                        border-radius: 10px;
+                                        text-align: left;
+                                        margin: 45px 0 10px 0;
+                                    }
+
+                                        [slider] > div {
+                                            position: absolute;
+                                            left: 13px;
+                                            right: 15px;
+                                            height: 14px;
+                                        }
+
+                                            [slider] > div > [inverse-left] {
+                                                position: absolute;
+                                                left: 0;
+                                                height: 14px;
+                                                border-radius: 10px;
+                                                background-color: #CCC;
+                                                margin: 0 7px;
+                                            }
+
+                                            [slider] > div > [inverse-right] {
+                                                position: absolute;
+                                                right: 0;
+                                                height: 14px;
+                                                border-radius: 10px;
+                                                background-color: #CCC;
+                                                margin: 0 7px;
+                                            }
+
+                                            [slider] > div > [range] {
+                                                position: absolute;
+                                                left: 0;
+                                                height: 14px;
+                                                border-radius: 14px;
+                                                background-color: #EDACAA;
+                                            }
+
+                                            [slider] > div > [thumb] {
+                                                position: absolute;
+                                                top: -7px;
+                                                z-index: 2;
+                                                height: 28px;
+                                                width: 28px;
+                                                text-align: left;
+                                                margin-left: -11px;
+                                                cursor: pointer;
+                                                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+                                                background-color: #FFF;
+                                                border-radius: 50%;
+                                                outline: none;
+                                            }
+
+                                        [slider] > input[type=range] {
+                                            position: absolute;
+                                            pointer-events: none;
+                                            -webkit-appearance: none;
+                                            z-index: 3;
+                                            height: 14px;
+                                            top: -2px;
+                                            width: 100%;
+                                            opacity: 0;
+                                        }
+
+                                    div[slider] > input[type=range]::-ms-track {
+                                        -webkit-appearance: none;
+                                        background: transparent;
+                                        color: transparent;
+                                    }
+
+
+                                    div[slider] > input[type=range]:focus::-webkit-slider-runnable-track {
+                                        background: transparent;
+                                        border: transparent;
+                                    }
+
+                                    div[slider] > input[type=range]:focus {
+                                        outline: none;
+                                    }
+
+                                    div[slider] > input[type=range]::-ms-thumb {
+                                        pointer-events: all;
+                                        width: 28px;
+                                        height: 28px;
+                                        border-radius: 0px;
+                                        border: 0 none;
+                                        background: red;
+                                    }
+
+                                    div[slider] > input[type=range]::-webkit-slider-thumb {
+                                        pointer-events: all;
+                                        width: 28px;
+                                        height: 28px;
+                                        border-radius: 0px;
+                                        border: 0 none;
+                                        background: red;
+                                        -webkit-appearance: none;
+                                    }
+
+                                    div[slider] > input[type=range]::-ms-fill-lower {
+                                        background: transparent;
+                                        border: 0 none;
+                                    }
+
+                                    div[slider] > input[type=range]::-ms-fill-upper {
+                                        background: transparent;
+                                        border: 0 none;
+                                    }
+
+                                    div[slider] > input[type=range]::-ms-tooltip {
+                                        display: none;
+                                    }
+
+                                    [slider] > div > [sign] {
+                                        opacity: 0;
+                                        position: absolute;
+                                        margin-left: -11px;
+                                        top: -39px;
+                                        z-index: 3;
+                                        background-color: #EDACAA;
+                                        color: #fff;
+                                        width: 28px;
+                                        height: 28px;
+                                        border-radius: 28px;
+                                        -webkit-border-radius: 28px;
+                                        align-items: center;
+                                        -webkit-justify-content: center;
+                                        justify-content: center;
+                                        text-align: center;
+                                    }
+
+                                        [slider] > div > [sign]:after {
+                                            position: absolute;
+                                            content: '';
+                                            left: 0;
+                                            border-radius: 16px;
+                                            top: 19px;
+                                            border-left: 14px solid transparent;
+                                            border-right: 14px solid transparent;
+                                            border-top-width: 16px;
+                                            border-top-style: solid;
+                                            border-top-color: #EDACAA;
+                                        }
+
+                                        [slider] > div > [sign] > span {
+                                            font-size: 12px;
+                                            font-weight: 700;
+                                            line-height: 28px;
+                                        }
+
+                                    [slider]:hover > div > [sign] {
+                                        opacity: 1;
+                                    }
+                                    /*========*/
+                                </style>
+
+                                <script>
+                                    function rn_min(tag) {
+                                        var thi = $(tag)[0];
+                                        thi.value = Math.min(thi.value, thi.parentNode.childNodes[5].value - 1);
+                                        var value = (100 / (parseInt(thi.max) - parseInt(thi.min))) * parseInt(thi.value) - (100 / (parseInt(thi.max) - parseInt(thi.min))) * parseInt(thi.min);
+                                        var children = thi.parentNode.childNodes[1].childNodes;
+                                        children[1].style.width = value + '%';
+                                        children[5].style.left = value + '%';
+                                        children[7].style.left = value + '%'; children[11].style.left = value + '%';
+                                        children[11].childNodes[1].innerHTML = thi.value;
+
+                                        $(tag).parent().parent().parent().parent().find(".r_min").html(thi.value);
+                                    }
+                                    function rn_max(tag) {
+                                        var thi = $(tag)[0];
+                                        this.value = Math.max(thi.value, thi.parentNode.childNodes[3].value - (-1));
+                                        var value = (100 / (parseInt(thi.max) - parseInt(thi.min))) * parseInt(thi.value) - (100 / (parseInt(thi.max) - parseInt(thi.min))) * parseInt(thi.min);
+                                        var children = thi.parentNode.childNodes[1].childNodes;
+                                        children[3].style.width = (100 - value) + '%';
+                                        children[5].style.right = (100 - value) + '%';
+                                        children[9].style.left = value + '%'; children[13].style.left = value + '%';
+                                        children[13].childNodes[1].innerHTML = thi.value;
+
+                                        $(tag).parent().parent().parent().parent().find(".r_max").html(thi.value);
+                                    }
+                                </script>
+                                <div class="st_sdr" style="width:100%; margin:auto">
+                                    <div style="display:flex;">
+                                        <div style="flex:1;">
+                                            <div slider>
+                                                <div>
+                                                    <div inverse-left style="width:70%;"></div>
+                                                    <div inverse-right style="width:70%;"></div>
+                                                    <div range style="left:0%;right:0%;"></div>
+                                                    <span thumb style="left:0%;"></span>
+                                                    <span thumb style="left:100%;"></span>
+                                                    <div sign style="left:0%;">
+                                                        <span class="in_min" id="value">10</span>
+                                                    </div>
+                                                    <div sign style="left:100%;">
+                                                        <span class="in_max" id="value">80</span>
+                                                    </div>
+                                                </div>
+                                                <input class="in_sln" type="range" tabindex="0" value="10" max="80" min="10" step="1" oninput="rn_min(this)" />
+
+                                                <input class="in_slx" type="range" tabindex="0" value="80" max="80" min="10" step="1" oninput="rn_max(this)" />
+                                            </div>
+                                        </div>
+                                        <div style="padding-top: 35px; padding-left: 20px; font-size: 30px; color: #EDACAA; cursor:pointer;" onclick="setres2(this)">
+                                            <span class="fa fa-search"></span>
+                                        </div>
+                                    </div>
+                                    <div class="aut_sr" style="display: flex; padding: 10px; font-weight: 500; ">
+                                        <div style="color: #EDACAA; display: flex;">
+                                            <div class="r_min">0</div>
+                                            <div style="width:50px; text-align:center; ">
+                                                <span style="color:#696969; font-size:25px; " class="fa fa-arrow-right"></span>
+                                            </div>
+                                            <div class="r_max">100</div>
+                                        </div>
+                                        <div style="flex:1"></div>
+                                        <div class="rs1" style="padding-left: 10px; display:none; padding-right: 2px; color: #EDACAA; font-weight:800; font-size:35px; cursor:pointer;" onclick="getResults(this)">
+                                            view
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="text-align: center; padding: 10px; font-weight: 800; font-size: 30px; color: #3B396D;">
+                                Search By Category
+                            </div>
+                            <div class="src_by_categ">
+                                <div style="width:80%; margin:auto; position:relative;">
+                                    <div style="width: 100%; display: flex; border-bottom: solid #EDACAA 2px;">
+                                        <div style="flex:1;">
+                                            <input oninput="loadfill(this)" type="text" style="width: 100%; text-align: center; outline: none; border: none;  font-size:30px; " />
+                                        </div>
+                                        <div style="padding-left: 10px; color: #EDACAA; cursor: pointer; font-size: 20px;">
+                                            <span class="ic i-cross"></span>
+                                        </div>
+                                    </div>
+                                    <div class="aut_res">
+                                        <div class="aut_opt" onclick="setres3(this)">
+                                            result 1
+                                        </div>
+                                    </div>
+                                    <div class="aut_dat">[ "result 1" , "result2" , "option 1"]</div>
+                                    <div class="aut_sr">
+                                        <div class="rs1">
+                                            result 1
+                                        </div>
+                                        <div style="flex:1;"></div>
+                                        <div style="color: #EDACAA; " onclick="getResults(this)">
+                                            <span class="fa fa-search"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding-top:90px;">
+                            <div style="text-align: center; padding: 10px; font-weight: 800; font-size: 30px; color: #3B396D;">
+                                Search By Supplier
+                            </div>
+                            <div class="src_by_supp">
+                                <div style="width:80%; margin:auto; position:relative;">
+                                    <div style="width: 100%; display: flex; border-bottom: solid #EDACAA 2px;">
+                                        <div style="flex:1;">
+                                            <input oninput="loadfill(this)" type="text" style="width: 100%; text-align: center; outline: none; border: none;  font-size:30px; " />
+                                        </div>
+                                        <div style="padding-left: 10px; color: #EDACAA; cursor: pointer; font-size: 20px;">
+                                            <span class="ic i-cross"></span>
+                                        </div>
+                                    </div>
+                                    <div class="aut_res">
+                                        <div class="aut_opt" onclick="setres4(this)">
+                                            result 1
+                                        </div>
+                                    </div>
+                                    <div class="aut_dat">[ "result 1" , "result2" , "option 1"]</div>
+                                    <div class="aut_sr">
+                                        <div class="rs1">
+                                            result 1
+                                        </div>
+                                        <div style="flex:1;"></div>
+                                        <div style="color: #EDACAA; " onclick="getResults(this)">
+                                            <span class="fa fa-search"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

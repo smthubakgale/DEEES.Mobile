@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="3cm" height="6cm" viewBox="386 42 53 110" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <ellipse style="fill: #ffffff" cx="412.017" cy="61.7269" rx="6" ry="6"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="412.017" cy="61.7269" rx="6" ry="6"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="388.017" y1="73.7269" x2="436.017" y2="73.7269"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="412.017" y1="67.7269" x2="412.017" y2="97.7269"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="412.017" y1="97.7269" x2="388.017" y2="123.727"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="412.017" y1="97.7269" x2="436.017" y2="123.727"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="412.017" y="147.627">
+      <tspan x="412.017" y="147.627"></tspan>
+    </text>
+  </g>
+</svg>
