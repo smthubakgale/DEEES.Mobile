@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="assets/icons/i_font-awesome.css">
     <!--Javascript-->
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/adjust.js"></script>
+    <script src="assets/js/adjust.js"></script> 
+    <script src="assets/js/datalink.js"></script>
+    <script src="assets/js/analytic/index.js"></script>
     <script src="assets/js/bridge.js"></script>
+    <script src="assets/js/linq.js"></script> 
     <!--Design Data-->
     <style>
         * {
@@ -213,9 +216,11 @@
 
 
     </style>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script> 
+    <script src="assets/js/firebase_cred.js"></script> 
 </head>
 <body>
-
     <style>
         .mbA{ display:none}
         .mbA1{display: block}
@@ -256,9 +261,9 @@
         </div>
 
             <style> 
-            .tbh{padding:10px; font-size:16px; width:150px; text-align:center;   }
-            .tbr{padding:10px; font-size:16px; width:150px;text-align:center; padding-top:30px; padding-left:5px;}
-            .tba{padding:10px; font-size:16px; width:150px;text-align:center; padding-top:15px; padding-left:5px; display:flex; font-size:30px;}
+            .tbh{padding:10px; font-size:16px; width:150px; word-break: break-word; text-align:center;   }
+            .tbr{padding:10px; font-size:16px; width:150px; word-break: break-word;  text-align:center; padding-left:5px;}
+            .tba{padding:10px; font-size:16px; width:150px; word-break: break-word;text-align:center; padding-top:15px; padding-left:5px; display:flex; font-size:30px;}
             .tba .a{flex:1; text-align:center; padding:10px; color:green; cursor:pointer;}
             .tba .b{flex:1; text-align:center; padding:10px; color:#DC3545; cursor:pointer;}
             .tbc1{ width:80px; } .tbc2{ width:100px; } .tbc3{ width:200px; } 
@@ -309,6 +314,20 @@
                 }
                 function edtD(tag)
                 { 
+                    var a = $(tag).parent().parent(); 
+                    $("#pp8").find(".idx").html(a.find(".idx").html());
+                    $("#pp8").find(".fn").val(a.find(".fn").html());
+                    $("#pp8").find(".ln").val(a.find(".ln").html());
+                    $("#pp8").find(".eml").val(a.find(".eml").html());
+                    $("#pp8").find(".pass").val(a.find(".pass").html());
+                    $("#pp8").find(".phn").val(a.find(".phn").html());
+                    $("#pp8").find(".idn").val(a.find(".idn").html());
+                    $("#pp8").find(".ut").val(a.find(".ut").html()).change();
+                    $("#pp8").find(".imge").attr("src" , a.find(".imge").attr("src" ));
+
+                    
+                    $("#pp8").find(".upd").attr("name" , a.find(".upd").attr("name" ));
+
                      swpp('pp8');
                 }
             </script>
@@ -357,48 +376,67 @@
                     </div>
                     <div style="flex:1;"></div>
                     <div class="tbh">
+                        Password <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
+                        UserType <span class="fa fa-sort"></span>
+                    </div>
+                    <div style="flex:1;"></div>
+                    <div class="tbh">
                         Action <span class="fa fa-sort"></span>
                     </div>
                     <div style="width:10px"></div>
                 </div>
-                <div>
+                <style>
+                    .ustb{ display:none; }
+                </style>
+                <div class="ustb">
                     <div class="tbrA">
-                        <div class="tbr tbc1">
+                        <div class="tbr tbc1 idx">
                             1
                         </div>
                         <div style="flex:1;"></div> 
                         <div class="tbh tbc2">
                             <div class="tbim">
-                                <img src="assets/img/img.png" class="a" />
+                                <img  class="imge a" src="assets/img/img.png"  />
                             </div>
                         </div>
                         <div style="flex:1;"></div>
-                        <div class="tbr tbc3">
+                        <div class="tbr tbc3 fn">
                             Dwayne
                         </div>
                         <div style="flex:1;"></div>
-                        <div class="tbr">
+                        <div class="tbr ln">
                             Johnson
                         </div>
                         <div style="flex:1;"></div>
-                        <div class="tbr">
+                        <div class="tbr eml">
                             solo@mail.com  
                         </div>
                         <div style="flex:1;"></div>
-                        <div class="tbr">
+                        <div class="tbr idn">
                             22017345288351
                         </div>
                         <div style="flex:1;"></div>
-                        <div class="tbr">
-                            066 267 3802
+                        <div class="tbr phn">
+                            082 346 3826
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr pass">
+                            **** 
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr ut">
+                            Customer
                         </div>
                         <div style="flex:1;"></div>
                         <div class="tba" >
                             <div style="flex:2"></div>
-                             <div class="a">
-                                <span class="fa fa-edit" onclick="edtD(this)" ></span>
+                             <div class="a upd" onclick="edtD(this)">
+                                <span class="fa fa-edit"  ></span>
                              </div>
-                             <div class="b">
+                             <div class="b dlt" onclick="rem_user(this)">
                                 <span class="fa fa-trash"></span>
                              </div>
                              <div style="flex:2"></div>
@@ -406,42 +444,50 @@
                         <div style="width:10px"></div>
                     </div>
                     <div class="tbrB">
-                        <div class="tbr tbc1">
+                        <div class="tbr tbc1 idx">
                             1
                         </div>
                         <div style="flex:1;"></div> 
                         <div class="tbh tbc2">
                             <div class="tbim">
-                                <img src="assets/img/img.png" class="a" />
+                                <img class="imge a" src="assets/img/img.png" />
                             </div>
                         </div>
                         <div style="flex:1;"></div>
-                        <div class="tbr tbc3">
+                        <div class="tbr tbc3 fn">
                             Rob
                         </div>
                         <div style="flex:1;"></div>
-                        <div class="tbr">
+                        <div class="tbr ln">
                             Lowe 
                         </div>
                         <div style="flex:1;"></div>
-                        <div class="tbr">
+                        <div class="tbr eml">
                             solo@mail.com  
                         </div>
                         <div style="flex:1;"></div>
-                        <div class="tbr">
+                        <div class="tbr idn">
                             9903025823538
                         </div>
                         <div style="flex:1;"></div>
-                        <div class="tbr">
+                        <div class="tbr phn">
                             082 346 3826
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr pass">
+                            ********
+                        </div>
+                        <div style="flex:1;"></div>
+                        <div class="tbr ut">
+                            Customer
                         </div>
                         <div style="flex:1;"></div>
                         <div class="tba" >
                             <div style="flex:2"></div>
-                             <div class="a" onclick="edtD(this)" >
+                             <div class="a upd" onclick="edtD(this)" >
                                 <span class="fa fa-edit"></span>
                              </div>
-                             <div class="b">
+                             <div class="b dlt" onclick="rem_user(this)">
                                 <span class="fa fa-trash"></span>
                              </div>
                              <div style="flex:2"></div>
@@ -467,51 +513,142 @@
                  <div style="flex:1;" onclick="hdpp('pp7')"></div>
                  <div style="height:80vh; display:flex; flex-direction:column;">
                     <div style="flex:1;" onclick="hdpp('pp7')"></div>
-                    <div style="width:300px; min-height:65vh; background-color:white;">
+                    <div style="width:300px;  height:65vh; overflow-y:scroll; background-color:white;">
                        <div class="pphd" >
                             <div style="padding:10px;"> Add New User </div>
                             <div style="flex:1;"></div>
                             <div style="padding:10px; cursor:pointer;" onclick="hdpp('pp7')"> <span class="fa fa-times"></span></div>
                        </div>
-                       <div class="ppfm" style=" min-height:60vh;">
+                       <div class="ppfm user_add" style=" min-height:60vh;">
 
                             <div class="pplb">
                                 First Name 
                             </div>
                             <div class="ppin">
-                                <input type="text" class="a" placeholder="First Name" />
+                                <input type="text" class="a fn" placeholder="First Name" />
                             </div>
                             <div class="pplb">
                                Last Name 
                             </div>
                             <div class="ppin">
-                                <input type="text" class="a" placeholder="Last Name" />
+                                <input type="text" class="a ln" placeholder="Last Name" />
                             </div>
                             <div class="pplb">
                                Email Address
                             </div>
                             <div class="ppin">
-                                <input type="email" class="a" placeholder="Email Address" />
+                                <input type="email" class="a eml" placeholder="Email Address" />
                             </div> 
                             <div class="pplb">
                                Identity Number 
                             </div>
                             <div class="ppin">
-                                <input type="text" class="a" placeholder="Identity Number" />
+                                <input type="text" class="a idn" placeholder="Identity Number" />
                             </div>
                             <div class="pplb">
                                Phone Number 
+                            </div> 
+                            <div class="ppin">
+                                <input type="text" class="a phn" placeholder="Phone Number" />
+                            </div>
+                            <div class="pplb">
+                               Password 
                             </div>
                             <div class="ppin">
-                                <input type="text" class="a" placeholder="Phone Number" />
+                                <input type="password" class="a pass" placeholder="Passsword" />
+                            </div>
+                            <div class="pplb">
+                               User Type
+                            </div>
+                            <div class="ppin">
+                                <select class="a ut">
+                                    <option> Customer </option>
+                                    <option> Admin  </option>
+                                </select>
                             </div>
                             <div class="pplb">
                                 User Image
                             </div> 
                             <div class="ppin">
-                                <input type="file" class="b" />
+                                <input type="file" onchange="imgload(this)" class="b" />
                             </div>
+                            <div style="padding-left:10px;">
+                                <img class="a imge" src="assets/img/img.png" style="width:60px; height:60px;" />
+                            </div>
+                            <script> 
+                                function imgload(input)
+                                { 
+                                   var file = input.files[0];
+                                   var reader = new FileReader();
 
+                                    reader.onloadend = function ()
+                                     {
+                                        var filetype = file.type.split('/');
+                                        if (filetype[0] == 'image')
+                                         {
+                                            $(input).parent().next().find(".a").attr("src" , reader.result); 
+                                        }
+                                        else 
+                                        {
+                                            alert("Unsupported file");
+                                        }
+                                    };
+                                    reader.readAsDataURL(file);
+                                }
+                                //
+                                function rem_user(tag)
+                                {
+                                   var key = $(tag).attr("name");
+
+                                   db.ref("usertable").child(key).remove();
+                                }
+                                function adduser()
+                                { 
+                                    var id = (usertable.length == 0) ? 1 :  usertable[0].select('x.Idx').max() + 1;
+
+                                    var img = $(".user_add").find(".imge").attr("src");
+                                    img = (img == "assets/img/img.png" ) ? "" : img
+
+                                    var data = 
+                                    {
+                                        "Idx" : id  ,
+                                        "FirstName" : $(".user_add").find(".fn").val() ,
+                                        "LastName" : $(".user_add").find(".ln").val() ,
+                                        "EmailAddress" : $(".user_add").find(".eml").val() ,
+                                        "IDnumber" : $(".user_add").find(".idn").val() ,
+                                        "Phone" : $(".user_add").find(".phn").val() ,
+                                        "Password" : $(".user_add").find(".pass").val() ,
+                                        "UserType" : $(".user_add").find(".ut").val() ,
+                                        "Image" : img 
+                                    }
+
+                                    db.ref('usertable').push(data);
+                                    hdpp('pp7');
+                                }
+                                function update_user(tag)
+                                {
+                                    var id = $(tag).attr("name");  
+                                    var data = 
+                                    {
+                                        "Idx" : $("#pp8").find(".idx").html() ,
+                                        "FirstName" : $("#pp8").find(".fn").val() ,
+                                        "LastName" : $("#pp8").find(".ln").val() ,
+                                        "EmailAddress" : $("#pp8").find(".eml").val() ,
+                                        "IDnumber" : $("#pp8").find(".idn").val() ,
+                                        "Phone" : $("#pp8").find(".phn").val() ,
+                                        "Password" : $("#pp8").find(".pass").val() ,
+                                        "UserType" : $("#pp8").find(".ut").val() ,
+                                        "Image" : $("#pp8").find(".imge").attr("src")
+                                    }
+  
+                                    var obj = {};
+                                    obj[id] = data;
+                                                                            
+                                    db.ref('usertable' ).update(obj);
+
+                                    //hdpp('pp8');
+                                }
+                            </script>
                             <div style="flex:1;"></div>
 
                             <div class="ppcn">
@@ -522,7 +659,7 @@
                                 <div style="flex:1;"></div>
                                 <div class="a" onclick="hdpp('pp7')">  Close </div>
                                 <div style="width:10px;"></div>
-                                <div class="b"> Add New User</div>
+                                <div class="b" onclick="adduser()"> Add New User </div>
                                 <div style="width:10px;"></div>
                            </div>
                        </div>
@@ -546,31 +683,46 @@
                             First Name 
                         </div>
                         <div class="ppin">
-                            <input type="text" class="a" placeholder="First Name" />
+                            <input type="text" class="a fn" placeholder="First Name" />
                         </div>
                         <div class="pplb">
                            Last Name 
                         </div>
                         <div class="ppin">
-                            <input type="text" class="a" placeholder="Last Name" />
+                            <input type="text" class="a ln" placeholder="Last Name" />
                         </div>
                         <div class="pplb">
                            Email Address
                         </div>
                         <div class="ppin">
-                            <input type="email" class="a" placeholder="Email Address" />
+                            <input type="email" class="a eml" placeholder="Email Address" />
                         </div> 
                         <div class="pplb">
                            Identity Number 
                         </div>
                         <div class="ppin">
-                            <input type="text" class="a" placeholder="Identity Number" />
+                            <input type="text" class="a idn" placeholder="Identity Number" />
                         </div>
                         <div class="pplb">
                            Phone Number 
                         </div>
                         <div class="ppin">
-                            <input type="text" class="a" placeholder="Phone Number" />
+                            <input type="text" class="a phn" placeholder="Phone Number" />
+                        </div>
+                        <div class="pplb">
+                           Password 
+                        </div>
+                        <div class="ppin">
+                            <input type="password" class="a pass" placeholder="Passsword" />
+                        </div>
+                        <div class="pplb">
+                           User Type
+                        </div>
+                        <div class="ppin">
+                            <select class="a ut">
+                                <option value="Customer" > Customer </option>
+                                <option value="Admin" > Admin  </option>
+                            </select>
                         </div>
                         <div class="pplb">
                             User Image
@@ -579,20 +731,20 @@
                                 <input type="file" class="b" />
                             </div>
                             <div style="padding-left:10px;">
-                                <img src="assets/img/img.png" style="width:60px; height:60px;" />
+                                <img class="imge" src="assets/img/img.png" style="width:60px; height:60px;" />
                             </div>
 
                             <div style="flex:1;"></div>
 
                             <div class="ppcn">
                                 <div style="width:10px;"></div>
-                                <div class="c">
+                                <div class="c idx">
                                     1
                                 </div>
                                 <div style="flex:1;"></div>
                                 <div class="a" onclick="hdpp('pp8')">  Close </div>
                                 <div style="width:10px;"></div>
-                                <div class="b"> Update User </div>
+                                <div class="b upd" onclick="update_user(this)"> Update User </div>
                                 <div style="width:10px;"></div>
                            </div>
                        </div>
@@ -1376,7 +1528,8 @@
 
     <div class="footer">
         <p> Thank you for using Dees Mobile @ the University of Johannesburg.</p>
-    </div>
+    </div> 
 
+    
 </body>
 </html>

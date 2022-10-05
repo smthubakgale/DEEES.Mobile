@@ -1,7 +1,10 @@
 
 // Client 
-function page(func, param) {
+function page(func, param) { 
     $("#frm")[0].contentWindow.postMessage(func + "(" + JSON.stringify(param) + ")", "*");
+}
+function layout0(func) {
+    window.top.postMessage(func + "()", "*");
 }
 function layout(func, param) {
     window.top.postMessage(func + "(" + JSON.stringify(param) + ")", "*");
@@ -13,16 +16,19 @@ function layout2(func, param) {
 
 function layout3(func, p1 , p2) { 
     window.top.postMessage(func + "('" + p1 + "' , '" + p2 + "')", "*");
-}
+} 
 
 window.onmessage = function (e) { 
-    $.globalEval(e.data);
-    try{
+    
+    try
+    {
+        $.globalEval(e.data); 
+    }
+    catch{}
+    try{ 
         $(".force-mobile")[0].contentWindow.postMessage(e.data, "*"); 
     }
-    catch{
-
-    }
+    catch{}
 }
 // Sever
 function hGet(ctrl, funct, paramt) {

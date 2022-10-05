@@ -16,11 +16,8 @@
     <script src="assets/js/linq.js"></script> 
     <script src="assets/js/adjust.js"></script>
     <script src="assets/js/bridge.js"></script> 
-    
     <!-- Firebase --> 
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script> 
     <!--Design Data-->
 </head>
 <body>
@@ -85,11 +82,47 @@
                     <div class="inpi"> * </div>
                 </div>
 
-                <div style="width: 200px; margin:auto; padding: 10px; text-align: center; background-color: #E48380; border-radius:40px; margin-top:60px; color:white; font-size:40px; font-weight:900;">
+                <div onclick="login()" style="width: 200px; margin:auto; padding: 10px; text-align: center; background-color: #E48380; border-radius:40px; margin-top:60px; color:white; font-size:40px; font-weight:900;">
                     SUBMIT
                 </div>
             </div>
+                <script src="assets/js/firebase_cred.js"></script>
+                <script> 
+                $(window).on("load" , function()
+                {
+                    setTimeout(function()
+                    {
+                        var a = setInterval(function()
+                        {
+                            if(typeof(usertable) != undefined)
+                            {
+                                clearInterval(a);
+                                layout2("toPages" , "usertable");  
+                            }
+                        },500);
 
+                    } , 1000)
+
+                });
+                function linkdata2(us)
+                {    
+                    try{ 
+                        $.globalEval(us);   
+                    }catch{} 
+
+                    var z = setInterval(function()
+                    {
+                        if(typeof(usertable) != undefined)
+                        {
+                            clearInterval(z); 
+                        }
+                    },500); 
+                } 
+                function login()
+                {
+
+                } 
+            </script>
             <div style="width: 100%; min-height:60vh; ">
             </div>
         </div>

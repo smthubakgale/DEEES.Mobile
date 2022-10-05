@@ -15,13 +15,12 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/linq.js"></script>
     <script src="assets/js/adjust.js"></script>
+    <script src="assets/js/datalink.js"></script>
     <script src="assets/js/bridge.js"></script>
     <!--Design Data--> 
-    
+ 
     <!-- Firebase --> 
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script> 
 
 </head>
 <body>
@@ -109,26 +108,39 @@
                 <div style="display:flex;">
                     <div style="flex:1;"> <input class="inpt pass2" type="password" /> </div> 
                 </div>
-                
-                <script> 
-                    // Your web app's Firebase configuration 
-                    var firebaseConfig = {
-                      apiKey: "AIzaSyBOJ6p-JlTOjmaS6uT58bEkKHoiLpnhYMc",
-                      authDomain: "sinovuyo-42012.firebaseapp.com",
-                      databaseURL: "https://sinovuyo-42012-default-rtdb.firebaseio.com",
-                      projectId: "sinovuyo-42012",
-                      storageBucket: "sinovuyo-42012.appspot.com",
-                      messagingSenderId: "171898232440",
-                      appId: "1:171898232440:web:b9d462bba794236095178d"
-                    };
-                    // Initialize Firebase
-                    firebase.initializeApp(firebaseConfig);
-                    firebase.analytics();
-
-                    var db = firebase.firestore();
-                    db.settings({timestampsInSnapshots: true});
-                    </script>
+                 
+                    <script src="assets/js/firebase_cred.js"></script>
                     <script> 
+                    $(window).on("load" , function()
+                    {
+                        setTimeout(function()
+                        {
+                            var a = setInterval(function()
+                            {
+                                if(typeof(usertable) != undefined)
+                                {
+                                    clearInterval(a);
+                                    layout2("toPages" , "usertable");  
+                                }
+                            },500);
+
+                        } , 1000)
+
+                    });
+                    function linkdata2(us)
+                    {    
+                        try{ 
+                            $.globalEval(us);   
+                        }catch{} 
+
+                        var z = setInterval(function()
+                        {
+                            if(typeof(usertable) != undefined)
+                            {
+                                clearInterval(z); 
+                            }
+                        },500); 
+                    } 
                     function register()
                     { 
                        var valid = true;
@@ -141,7 +153,8 @@
                         "IDnumber" : $(".idnum").val() ,
                         "Phone" : $(".phone").val() ,
                         "Password" : $(".pass1").val() ,
-                        "UserType" : "Customer"
+                        "UserType" : "Customer" ,
+                        "Image" : ""
                        }
 
                        var conf = {
@@ -186,25 +199,48 @@
 
                        // Error Handling 
                           if(valid)
-                          {
-                              db.collection('UserTable').where("EmailAddress", "==", data.EmailAddress).get().then((snapshot) =>
+                          { 
+                              var id = (usertable.length == 0) ? 1 :  usertable[0].select('x.Idx').max() + 1;
+                              data.Idx = id;
+
+                              if(usertable.length == 0)
                               {
-                                if(snapshot.size == 0)
-                                { 
-                                   data.Idx = snapshot.size + 1; 
-                                   db.collection('UserTable').add(data);
+                                    db.ref('usertable').push(data);
+                                    
                                     layout3("jAlert2", "Registered" , "#2FB886");
                                     setTimeout(function()
                                     {
                                        layout2("jDirect", "login.html"); 
 
                                     } , 3000)
-                                }
-                                else
-                                {
+                              }
+                              else
+                              {
+                                  var tc = usertable[0];
+                                  var tk = usertable[1];
+
+                                  var tb = tc.where({EmailAddress:data.EmailAddress});
+
+                                  if(tb.length == 0)
+                                  { 
+                                    db.ref('usertable').push(data);
+                                    
+                                    layout3("jAlert2", "Registered" , "#2FB886");
+                                    setTimeout(function()
+                                    {
+                                       layout2("jDirect", "login.html"); 
+
+                                    } , 3000);
+
+                                  }
+                                  else{
+
                                     layout2("jAlert", "Account Exists");
-                                }
-                              });
+                                  }
+ 
+
+                              }
+ 
                           } 
                        //
 

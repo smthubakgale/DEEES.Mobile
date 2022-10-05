@@ -19,8 +19,14 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bridge.js"></script> 
     <script src="assets/js/adjust.js"></script>
+    <script src="assets/js/linq.js"></script> 
+    <script src="assets/js/datalink.js"></script> 
 
-    <script src="assets/js/client/layout.js"></script>
+    <script src="assets/js/client/layout.js"></script> 
+    <!-- Firebase --> 
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script> 
+    <script src="assets/js/firebase_cred.js"></script>
+ 
 </head>
 <body>
 
@@ -298,5 +304,166 @@
         </section>
     </main>  
 
+    <script>
+ 
+       // Read Database 
+       var list = ["usertable"];
+
+       $.each(list , (k , itm)=>
+       {
+            // Initially
+            db.ref( itm ).once("value" , (snap) =>
+            {
+                // Create  
+                var us = "var " + itm + " = "; 
+                var tc = dbs(snap); 
+                var tk = dbk(snap); 
+
+                if(tc.length == 0)
+                {
+                    us += "[];";
+                }
+                else
+                {
+                    us += JSON.stringify([tc , tk]) + ";";
+                }
+                // Load 
+                   try
+                   {
+                      $.globalEval(us); 
+                      layout2("linkdata", us);
+                   }
+                   catch{} 
+                //    
+            });
+            // Receive Addition 
+            db.ref( itm ).on("child_added", function(snap) 
+            {
+                
+                var a = window[itm] ;
+                var b = a + "";
+                var us = "var " + itm + " = "; 
+
+                if(b == "")
+                { 
+                    us += JSON.stringify([ [snap.val()] , [snap.key]]) + ";";
+                }
+                else if( b != "undefined")
+                {
+                    var tc = a[0];
+                    var tk = a[1];
+
+                    tc.push(snap.val());
+                    tk.push(snap.key);
+
+                    us += JSON.stringify([tc , tk]) + ";"; 
+                }
+                // Load 
+                   try
+                   {  
+                       $.globalEval(us); 
+                       layout2("linkdata", us);
+                       layout0(itm + "_load()");
+                   }
+                   catch{} 
+                //   
+            });
+            // Receive Update  
+            db.ref( itm ).on("child_changed", function(snap) 
+            { 
+                var a = window[itm] ;
+                var b = a + "";
+                var us = "var " + itm + " = "; 
+
+                if( b != "undefined")
+                {
+                    var tc = a[0];
+                    var tk = a[1];
+
+                    var pos = 0;
+
+                    $.each(tk , (k , itm)=>
+                    {
+                        if(snap.key == itm)
+                        {
+                            pos = k;
+                        }
+                    })
+
+                    tc[pos] = snap.val(); 
+
+                    us += JSON.stringify([tc , tk]) + ";"; 
+                }
+                // Load  
+                   try
+                   { 
+                      $.globalEval(us);
+                      layout2("linkdata", us);
+                      layout0(itm + "_load()");
+                   }
+                   catch{} 
+                //   
+            });
+            // Receive Deleted   
+            db.ref( itm ).on("child_removed", function(snap) 
+            {  
+                var a = window[itm] ;
+                var b = a + "";
+                var us = "var " + itm + " = "; 
+
+                if( b != "undefined")
+                {
+                    var tc = a[0]; var tcn = [];
+                    var tk = a[1]; var tkn = [];
+
+                    var pos = 0;
+
+                    $.each(tk , (k , itm)=>
+                    {
+                        if(snap.key != itm)
+                        {
+                            tcn.push(tc[k]);
+                            tkn.push(tk[k]);
+                        } 
+                    })
+
+                    us += JSON.stringify([tcn , tkn]) + ";"; 
+                }
+                // Load 
+                   try
+                   { 
+                      $.globalEval(us); 
+                      layout2("linkdata", us);
+                      layout0(itm + "_load()");
+                   }
+                   catch{} 
+                //   
+            });
+            // 
+       })
+       // Write To Pages
+       function toPages(name)
+       {  
+           var w = setInterval(function()
+           {
+               if(typeof(window[name]) != undefined)
+                {
+                    clearInterval(w);   
+
+                    var a = window[name]; 
+                    var c = [];
+    
+                    var b = "var " + name + " = " + JSON.stringify(a) + ";";  
+
+                    try
+                    {
+                        page("linkdata2", b);
+                    }
+                    catch{}
+               }
+           },500);
+ 
+       }
+   </script>
 </body>
 </html>

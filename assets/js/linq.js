@@ -69,3 +69,38 @@ function processJSON(dat) {
 
     return String(ret);
 } 
+ 
+Array.prototype.max = function() {
+    return Math.max.apply(null, this);
+  };
+  
+  Array.prototype.min = function() {
+    return Math.min.apply(null, this);
+  };
+
+  
+function dbs(snap)
+{
+    if(JSON.stringify(snap.val()) == "null"){ return [];} 
+
+    var arr = [];
+    snap.forEach(obj => 
+    { 
+        arr.push( obj.val()); 
+    }) 
+    
+    return arr;
+}
+function dbk(snap)
+{
+    if(JSON.stringify(snap.val()) == "null"){ return [];} 
+
+    var arr = [];
+    snap.forEach(obj => 
+    { 
+        arr.push( obj.key); 
+    }) 
+    
+    return arr;
+}
+
